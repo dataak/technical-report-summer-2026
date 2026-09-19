@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <script>document.documentElement.classList.add("is-reveal");</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>گزارش سه‌ماهه تیم فنی · تابستان ۱۴۰۵</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --challenge-h: 172px;
+      --challenge-overlap: calc(var(--challenge-h) * 0.5);
+      --challenge-hero-gap: 22px;
+      --navy: #0c2744;
+      --navy-2: #163a5f;
+      --ink: #1b2b3c;
+      --muted: #5b6b7c;
+      --line: #e4ebf2;
+      --page: #eef3f8;
+      --card: #ffffff;
+      --teal: #0f8a73;
+      --teal-soft: #e7f6f2;
+      --blue: #1b6aa3;
+      --blue-soft: #e8f2fb;
+      --purple: #6b4cb0;
+      --purple-soft: #f1ecfb;
+      --amber: #b86a12;
+      --amber-soft: #fbf3e6;
+      --bug: #f7eed6;
+      --bug-ink: #8a6914;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: var(--page);
+      color: var(--ink);
+      font-family: Vazirmatn, Tahoma, sans-serif;
+      line-height: 1.7;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: var(--navy);
+      color: #fff;
+      padding: 42px 24px calc(var(--challenge-overlap) + var(--challenge-hero-gap));
+      text-align: center;
+    }
+
+    .hero-pattern {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      opacity: .18;
+      -webkit-mask-image: radial-gradient(ellipse 70% 80% at 50% 45%, rgba(0,0,0,.35) 0%, #000 78%);
+              mask-image: radial-gradient(ellipse 70% 80% at 50% 45%, rgba(0,0,0,.35) 0%, #000 78%);
+    }
+
+    .hero .pill,
+    .hero h1,
+    .hero p {
+      position: relative;
+      z-index: 1;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.16);
+      color: #d7e6f5;
+      font-size: 12.5px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: 52px;
+      font-weight: 800;
+      letter-spacing: -.03em;
+      line-height: 1.15;
+    }
+
+    .hero p {
+      margin-top: 10px;
+      color: #c5d5e6;
+      font-size: 15px;
+      max-width: 640px;
+      margin-inline: auto;
+    }
+
+    .ver, .prod.gpr, .prod.sv { direction: ltr; unicode-bidi: isolate; }
+
+    .wrap {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto 64px;
+    }
+
+    .challenge {
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      margin-top: calc(var(--challenge-overlap) * -1);
+      background: linear-gradient(165deg, rgba(32, 74, 114, .78) 0%, rgba(16, 46, 76, .88) 100%);
+      -webkit-backdrop-filter: blur(18px) saturate(1.35);
+      backdrop-filter: blur(18px) saturate(1.35);
+      color: #fff;
+      border-radius: 22px;
+      padding: 34px 40px 32px;
+      border: 1px solid rgba(255, 255, 255, .22);
+      box-shadow:
+        0 22px 56px rgba(12, 39, 68, .32),
+        0 8px 20px rgba(12, 39, 68, .18),
+        inset 0 1px 0 rgba(255, 255, 255, .28),
+        inset 0 -36px 64px rgba(8, 24, 44, .16);
+      text-align: right;
+    }
+    .challenge::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(135deg, rgba(255,255,255,.16) 0%, rgba(255,255,255,.04) 36%, transparent 58%);
+    }
+
+    .challenge h2 {
+      position: relative;
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .challenge .lead {
+      position: relative;
+      color: #d5e4f2;
+      font-size: 14.5px;
+      text-align: right;
+    }
+
+    .chart-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 26px 28px 18px;
+      margin: 22px 0 8px;
+      box-shadow: 0 12px 32px rgba(12, 39, 68, .07);
+    }
+    .chart-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+    .chart-head h3 {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    .chart-head p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 2px;
+    }
+    .chart-total {
+      text-align: left;
+      flex: none;
+    }
+    .chart-total b {
+      display: block;
+      font-size: 34px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1;
+      letter-spacing: -.03em;
+      direction: ltr;
+    }
+    .chart-total span {
+      color: var(--muted);
+      font-size: 12.5px;
+    }
+    .chart-svg {
+      direction: ltr;
+      width: 100%;
+      overflow: hidden;
+    }
+    .chart-svg svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .chart-note {
+      color: #8a97a6;
+      font-size: 11.5px;
+      text-align: center;
+      margin-top: 2px;
+    }
+
+    .chart-mobile { display: none; }
+    .hbar-group {
+      border-radius: 16px;
+      padding: 12px 14px 10px;
+      margin-bottom: 10px;
+    }
+    .hbar-group:last-child { margin-bottom: 0; }
+    .hbar-group.tir { background: #f4f8fc; }
+    .hbar-group.mordad { background: #f7f5fb; }
+    .hbar-group.shahrivar { background: #fbf6ee; }
+    .hbar-month {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .hbar + .hbar { margin-top: 12px; }
+    .hbar-top {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .hbar-ver {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--navy);
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+    .hbar-date {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .hbar-top b {
+      margin-right: auto;
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--navy);
+    }
+    .hbar-track {
+      height: 14px;
+      border-radius: 999px;
+      background: rgba(12, 39, 68, .08);
+      overflow: hidden;
+    }
+    .hbar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: #163a5f;
+    }
+    .hbar-fill.sv { background: #b86a12; }
+
+    html.is-reveal .hbar-fill {
+      transform: scaleX(var(--reveal, 0));
+      transform-origin: right center;
+    }
+
+    .month {
+      margin: 18px 0 12px;
+      padding: 0;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .timeline {
+      position: relative;
+      padding-right: 32px;
+      margin-top: 28px;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      bottom: 10px;
+      right: 6px;
+      width: 2px;
+      background: linear-gradient(#c5d4e2, #dbe4ee);
+    }
+
+    .tl {
+      position: relative;
+      margin-bottom: 12px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px 18px 12px;
+    }
+    .tl::before {
+      content: "";
+      position: absolute;
+      top: 26px;
+      right: -30px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--navy);
+      box-shadow: 0 0 0 4px var(--page);
+    }
+    .tl.dastan::before { background: var(--purple); }
+    .tl.suivi::before { background: var(--amber); }
+    .tl.mixed::before { background: var(--navy); }
+
+    .tl-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 10px;
+      margin-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+    }
+    .tl-date {
+      font-size: 14px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .vers {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .ver {
+      background: var(--navy);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 999px;
+    }
+    .ver.ghost {
+      background: #d9e3ee;
+      color: var(--navy);
+    }
+
+    .tl-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .tl-list li {
+      position: relative;
+      padding: 4px 16px 4px 0;
+      color: #445566;
+      font-size: 13.5px;
+      line-height: 1.65;
+    }
+    .tl-list li::before {
+      content: "";
+      position: absolute;
+      top: 0.72em;
+      right: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+
+    .value {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--line);
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .value::before {
+      content: "ارزش: ";
+      font-weight: 700;
+    }
+
+    .icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      flex: none;
+    }
+    .icon svg { width: 18px; height: 18px; }
+
+    .squad {
+      margin-top: 46px;
+    }
+    .squad-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .squad-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .squad-title h3 { font-size: 22px; font-weight: 700; }
+    .squad-title small { display: block; color: var(--muted); font-size: 13px; font-weight: 400; }
+    .squad-title:has(small) .icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 14px;
+    }
+    .squad-title:has(small) .icon svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    .squad.data { margin: 28px 0 8px; }
+    .squad.app-block { margin-top: 42px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px 20px 16px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .card h4 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .card p { color: #445566; font-size: 13.5px; }
+    .card .value {
+      margin-top: auto;
+      padding-top: 15px;
+      border-top: none;
+      background-image: repeating-linear-gradient(
+        90deg,
+        var(--line) 0,
+        var(--line) 4px,
+        transparent 4px,
+        transparent 8px
+      );
+      background-size: 8px 1px;
+      background-position: 0 4px;
+      background-repeat: repeat-x;
+    }
+
+    @media (max-width: 820px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      margin-top: 14px;
+    }
+
+    th, td {
+      text-align: right;
+      padding: 13px 16px;
+      font-size: 13.5px;
+    }
+
+    th {
+      background: var(--navy);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    tbody tr:nth-child(even) { background: #f7fafc; }
+    td { border-top: 1px solid var(--line); color: #334455; }
+    td:first-child { font-weight: 700; white-space: nowrap; }
+
+    .prod {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 10px 3px 6px;
+      border-radius: 999px;
+    }
+    .prod.gpr { background: var(--blue-soft); color: var(--blue); }
+    .prod.dst { background: var(--purple-soft); color: var(--purple); }
+    .prod.sv { background: var(--amber-soft); color: var(--amber); }
+    .prod.data { background: var(--teal-soft); color: var(--teal); }
+    .prod.data::before {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230f8a73' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><ellipse cx='12' cy='5' rx='9' ry='3'/><path d='M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5'/><path d='M3 12c0 1.66 4 3 9 3s9-1.34 9-3'/></svg>");
+      background-size: 14px;
+    }
+
+    .prod::before {
+      content: "";
+      width: 18px;
+      height: 18px;
+      border-radius: 5px;
+      background-color: #fff;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      flex: none;
+    }
+    .prod.gpr::before {
+      background-image: url("data:image/png;base64,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");
+    }
+    .prod.dst::before {
+      background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIuMDc3MyIgdmlld0JveD0iMCAwIDMyIDMyLjA3NzMiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGlkPSJHcm91cCI+CjxwYXRoIGlkPSJWZWN0b3IiIGQ9Ik00LjkzMTQ1IDQuOTMxMTRDNi43MzM0OCAzLjEyOTMzIDkuNjY1NTIgMy4xMjkzMyAxMS40NjcgNC45MzExNEwxMi40NjgyIDUuOTMyODFMMTMuNDY5NCA2LjkzMzg5TDE1Ljk5OTUgOS40NjM3TDE3LjMzMTYgMTAuNzk1N0wyMC41MzI2IDEzLjk5NTdMMjMuMDYyNyAxMS40NjU5TDE5Ljg2MjMgOC4yNjU4N0wxOC41Mjk2IDYuOTMzODlMMTUuOTk5NSA0LjQwNDA3TDE0Ljk5ODMgMy40MDI0TDEzLjk5NzEgMi40MDEzM0MxMC43OTQ5IC0wLjgwMDQ0MiA1LjYwMzQ4IC0wLjgwMDQ0MiAyLjQwMTMyIDIuNDAxMzNDMC44MDAyNDEgNC4wMDIyMSA3LjQ1MDU4ZS0wOCA2LjEwMDM1IDcuNDUwNThlLTA4IDguMTk4NUM3LjQ1MDU4ZS0wOCAxMC4yOTY2IDAuODAwMjQxIDEyLjM5NDggMi40MDEzMiAxMy45OTUxTDQuOTMxNDUgMTEuNDY1OUMzLjEyOTQxIDkuNjY0MDQgMy4xMjk0MSA2LjczMjM2IDQuOTMxNDUgNC45MzExNFoiIGZpbGw9IiMwMDQyNkMiLz4KPHBhdGggaWQ9IlZlY3Rvcl8yIiBkPSJNMjcuMDY4MyAyNy4wNzMzQzI1LjI2NjIgMjguODc1MSAyMi4zMzQ4IDI4Ljg3NTEgMjAuNTMyOCAyNy4wNzMzTDE4LjUyOTggMjUuMDcwNkwxNi4wMDAyIDIyLjU0MDdMMTUuOTk5NiAyMi41NDEzTDE0Ljk5ODQgMjEuNTM5N0wxMS40NjcxIDE4LjAwODhMOC45Mzc2IDIwLjUzODZMMTIuNDY4OSAyNC4wNjk1TDEzLjQ3MDEgMjUuMDcwNkwxNS45OTk2IDI3LjYwMDRMMTcuMzMyNCAyOC45MzI0TDE4LjAwMjYgMjkuNjAyNUMyMS4yMDQ4IDMyLjgwNDMgMjYuMzk2MiAzMi44MDQzIDI5LjU5ODQgMjkuNjAyNUMzMi44MDA1IDI2LjQwMTMgMzIuODAwNSAyMS4yMTA1IDI5LjU5ODQgMTguMDA4OEwyNy4wNjgzIDIwLjUzODZDMjguODcwMyAyMi4zMzk4IDI4Ljg3MDMgMjUuMjcxNSAyNy4wNjgzIDI3LjA3MzNaIiBmaWxsPSIjMDA0MjZDIi8+CjxwYXRoIGlkPSJWZWN0b3JfMyIgZD0iTTExLjQ2NjQgMjcuMTQ3QzkuNjY0OTkgMjguOTQ4OCA2LjczMzA3IDI4Ljk0ODggNC45MzExIDI3LjE0N0MzLjEyOTE0IDI1LjM0NTIgMy4xMjkxNCAyMi40MTM1IDQuOTMxMSAyMC42MTIyTDUuODY0ODkgMTkuNjc4NVYxOS42Nzc5TDYuOTM0MDIgMTguNjA5NUw5LjQ2MzQ1IDE2LjA4MDJWMTYuMDc5NkwxMC43Mjg4IDE0LjgxNUwxMy45OTY0IDExLjU0NzZMMTEuNDY2NCA5LjAxNzc4TDYuOTMzNDIgMTMuNTUwNEw0LjQwMzk5IDE2LjA3OTZMMy4zMzQ4NiAxNy4xNDg3TDIuNDAxMDggMTguMDgyNEMtMC44MDAzNiAyMS4yODQyIC0wLjgwMDM2IDI2LjQ3NSAyLjQwMTA4IDI5LjY3NjJDNC4wMDIxIDMxLjI3NzEgNi4xMDA0MiAzMi4wNzczIDguMTk4NzMgMzIuMDc3M0MxMC4yOTcxIDMyLjA3NzMgMTIuMzk1NCAzMS4yNzcxIDEzLjk5NjQgMjkuNjc2MkwxMS40NjY0IDI3LjE0N1oiIGZpbGw9IiMwMEE4QUQiLz4KPHBhdGggaWQ9IlZlY3Rvcl80IiBkPSJNMjAuNTI3MiA0LjkzMDg4QzIyLjMyOTIgMy4xMjkwNSAyNS4yNjA1IDMuMTI5MDUgMjcuMDYyNSA0LjkzMDg4QzI4Ljg2NDUgNi43MzIxMiAyOC44NjQ1IDkuNjYzODIgMjcuMDYyNSAxMS40NjU2TDI1LjA1OTYgMTMuNDY4NEwyMi41Mjk2IDE1Ljk5ODJMMjEuNTIwMSAxNy4wMDc3TDE3Ljk5NzIgMjAuNTMwM0wyMC41MjcyIDIzLjA1OTVMMjUuMDU5NiAxOC41Mjc1TDI3LjU4OTYgMTUuOTk3N0wyOC45MTM0IDE0LjY3NEwyOS41OTI1IDEzLjk5NDlDMzIuNzk0NiAxMC43OTM3IDMyLjc5NDYgNS42MDI4NCAyOS41OTI1IDIuNDAxMDVDMjcuOTkxNSAwLjgwMDE1IDI1Ljg5MzIgMCAyMy43OTQ5IDBDMjEuNjk2NiAwIDE5LjU5ODIgMC44MDAxNSAxNy45OTcyIDIuNDAxMDVMMjAuNTI3MiA0LjkzMDg4WiIgZmlsbD0iIzAwQThBRCIvPgo8cGF0aCBpZD0iVmVjdG9yXzUiIGQ9Ik0xNi4wMDM0IDEzLjQ5OTlMMTMuNDczNCAxNi4wMjkxTDE2LjAwMzQgMTguNTU5TDE4LjUzMjggMTYuMDI5MUwxNi4wMDM0IDEzLjQ5OTlaIiBmaWxsPSIjMDBBOEFEIi8+CjwvZz4KPC9zdmc+Cg==");
+    }
+    .prod.sv::before {
+      background-image: url("data:image/png;base64,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");
+    }
+
+    footer {
+      text-align: center;
+      color: #8a97a6;
+      font-size: 12.5px;
+      padding: 12px 0 36px;
+    }
+    footer .heart {
+      display: inline-block;
+      margin: 0 2px;
+      transform: translateY(1px);
+    }
+
+    html.is-reveal .challenge,
+    html.is-reveal .squad-head,
+    html.is-reveal .card,
+    html.is-reveal .chart-card,
+    html.is-reveal .month,
+    html.is-reveal .tl,
+    html.is-reveal .squad > table,
+    html.is-reveal footer {
+      opacity: var(--reveal, 0);
+      transform: translate3d(0, calc((1 - var(--reveal, 0)) * 2.2rem), 0);
+      will-change: transform, opacity;
+    }
+    @media (max-width: 820px) {
+      html.is-reveal .challenge,
+      html.is-reveal .squad-head,
+      html.is-reveal .card,
+      html.is-reveal .chart-card,
+      html.is-reveal .month,
+      html.is-reveal .tl,
+      html.is-reveal .squad > table,
+      html.is-reveal footer {
+        transform: translate3d(0, calc((1 - var(--reveal, 0)) * 3rem), 0);
+      }
+    }
+    html.is-reveal .chart-bar {
+      transform-box: fill-box;
+      transform-origin: 50% 100%;
+      transform: scaleY(var(--reveal, 0));
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html.is-reveal .challenge,
+      html.is-reveal .squad-head,
+      html.is-reveal .card,
+      html.is-reveal .chart-card,
+      html.is-reveal .month,
+      html.is-reveal .tl,
+      html.is-reveal .squad > table,
+      html.is-reveal footer,
+      html.is-reveal .chart-bar,
+      html.is-reveal .hbar-fill {
+        opacity: 1 !important;
+        transform: none !important;
+        will-change: auto;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .hero h1 { font-size: 40px; }
+      .challenge { padding: 28px 22px; }
+      .timeline { padding-right: 24px; }
+      .chart-card { padding: 20px 14px 16px; }
+      .chart-head { align-items: flex-start; }
+      .chart-total b { font-size: 28px; }
+      .chart-svg { display: none; }
+      .chart-mobile { display: block; }
+    }
+
+    @media print {
+      .hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .wrap { width: calc(100% - 24px); }
+      .tl, .challenge, .chart-card, .card, table { break-inside: avoid; }
+      .hero, .hero-pattern { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .challenge {
+        background: linear-gradient(160deg, #1a4068 0%, #143454 100%);
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        box-shadow: none;
+        border: none;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .challenge::before { display: none; }
+      html.is-reveal .hbar-fill {
+        transform: none;
+      }
+      .chart-mobile { display: none !important; }
+      .chart-svg { display: block !important; }
+      .challenge, .squad-head, .card, .chart-card, .month, .tl, table, footer, .chart-bar {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        will-change: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+      <svg class="hero-pattern" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <symbol id="lg-nextdotjs" viewBox="0 0 24 24"><path fill="#fff" d="M18.665 21.978C16.758 23.255 14.465 24 12 24 5.377 24 0 18.623 0 12S5.377 0 12 0s12 5.377 12 12c0 3.583-1.574 6.801-4.067 9.001L9.219 7.2H7.2v9.596h1.615V9.251l9.85 12.727Zm-3.332-8.533 1.6 2.061V7.2h-1.6v6.245Z"/></symbol>
+          <symbol id="lg-react" viewBox="0 0 24 24"><path fill="#fff" d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38-.318-.184-.688-.277-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44-.96-.236-2.006-.417-3.107-.534-.66-.905-1.345-1.727-2.035-2.447 1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442-1.107.117-2.154.298-3.113.538-.112-.49-.195-.964-.254-1.42-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05c.455.468.91.992 1.36 1.564-.44-.02-.89-.034-1.345-.034-.46 0-.915.01-1.36.034.44-.572.895-1.096 1.345-1.565zM12 8.1c.74 0 1.477.034 2.202.093.406.582.802 1.203 1.183 1.86.372.64.71 1.29 1.018 1.946-.308.655-.646 1.31-1.013 1.95-.38.66-.773 1.288-1.18 1.87-.728.063-1.466.098-2.21.098-.74 0-1.477-.035-2.202-.093-.406-.582-.802-1.204-1.183-1.86-.372-.64-.71-1.29-1.018-1.946.303-.657.646-1.313 1.013-1.954.38-.66.773-1.286 1.18-1.868.728-.064 1.466-.098 2.21-.098zm-3.635.254c-.24.377-.48.763-.704 1.16-.225.39-.435.782-.635 1.174-.265-.656-.49-1.31-.676-1.947.64-.15 1.315-.283 2.015-.386zm7.26 0c.695.103 1.365.23 2.006.387-.18.632-.405 1.282-.66 1.933-.2-.39-.41-.783-.64-1.174-.225-.392-.465-.774-.705-1.146zm3.063.675c.484.15.944.317 1.375.498 1.732.74 2.852 1.708 2.852 2.476-.005.768-1.125 1.74-2.857 2.475-.42.18-.88.342-1.355.493-.28-.958-.646-1.956-1.1-2.98.45-1.017.81-2.01 1.085-2.964zm-13.395.004c.278.96.645 1.957 1.1 2.98-.45 1.017-.812 2.01-1.086 2.964-.484-.15-.944-.318-1.37-.5-1.732-.737-2.852-1.706-2.852-2.474 0-.768 1.12-1.742 2.852-2.476.42-.18.88-.342 1.356-.494zm11.678 4.28c.265.657.49 1.312.676 1.948-.64.157-1.316.29-2.016.39.24-.375.48-.762.705-1.158.225-.39.435-.788.636-1.18zm-9.945.02c.2.392.41.783.64 1.175.23.39.465.772.705 1.143-.695-.102-1.365-.23-2.006-.386.18-.63.406-1.282.66-1.933zM17.92 16.32c.112.493.2.968.254 1.423.23 1.868-.054 3.32-.714 3.708-.147.09-.338.128-.563.128-1.012 0-2.514-.807-4.11-2.28.686-.72 1.37-1.536 2.02-2.44 1.107-.118 2.154-.3 3.113-.54zm-11.83.01c.96.234 2.006.415 3.107.532.66.905 1.345 1.727 2.035 2.446-1.595 1.483-3.092 2.295-4.11 2.295-.22-.005-.406-.05-.553-.132-.666-.38-.955-1.834-.73-3.703.054-.46.142-.944.25-1.438zm4.56.64c.44.02.89.034 1.345.034.46 0 .915-.01 1.36-.034-.44.572-.895 1.095-1.345 1.565-.455-.47-.91-.993-1.36-1.565z"/></symbol>
+          <symbol id="lg-css" viewBox="0 0 24 24"><path fill="#fff" d="M0 0v20.16A3.84 3.84 0 0 0 3.84 24h16.32A3.84 3.84 0 0 0 24 20.16V3.84A3.84 3.84 0 0 0 20.16 0Zm14.256 13.08c1.56 0 2.28 1.08 2.304 2.64h-1.608c.024-.288-.048-.6-.144-.84-.096-.192-.288-.264-.552-.264-.456 0-.696.264-.696.84-.024.576.288.888.768 1.08.72.288 1.608.744 1.92 1.296q.432.648.432 1.656c0 1.608-.912 2.592-2.496 2.592-1.656 0-2.4-1.032-2.424-2.688h1.68c0 .792.264 1.176.792 1.176.264 0 .456-.072.552-.24.192-.312.24-1.176-.048-1.512-.312-.408-.912-.6-1.32-.816q-.828-.396-1.224-.936c-.24-.36-.36-.888-.36-1.536 0-1.44.936-2.472 2.424-2.448m5.4 0c1.584 0 2.304 1.08 2.328 2.64h-1.608c0-.288-.048-.6-.168-.84-.096-.192-.264-.264-.528-.264-.48 0-.72.264-.72.84s.288.888.792 1.08c.696.288 1.608.744 1.92 1.296.264.432.408.984.408 1.656.024 1.608-.888 2.592-2.472 2.592-1.68 0-2.424-1.056-2.448-2.688h1.68c0 .744.264 1.176.792 1.176.264 0 .456-.072.552-.24.216-.312.264-1.176-.048-1.512-.288-.408-.888-.6-1.32-.816-.552-.264-.96-.576-1.2-.936s-.36-.888-.36-1.536c-.024-1.44.912-2.472 2.4-2.448m-11.031.018c.711-.006 1.419.198 1.839.63.432.432.672 1.128.648 1.992H9.336c.024-.456-.096-.792-.432-.96-.312-.144-.768-.048-.888.24-.12.264-.192.576-.168.864v3.504c0 .744.264 1.128.768 1.128a.65.65 0 0 0 .552-.264c.168-.24.192-.552.168-.84h1.776c.096 1.632-.984 2.712-2.568 2.688-1.536 0-2.496-.864-2.472-2.472v-4.032c0-.816.24-1.44.696-1.848.432-.408 1.146-.624 1.857-.63"/></symbol>
+          <symbol id="lg-html5" viewBox="0 0 24 24"><path fill="#fff" d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></symbol>
+          <symbol id="lg-php" viewBox="0 0 24 24"><path fill="#fff" d="M7.01 10.207h-.944l-.515 2.648h.838c.556 0 .97-.105 1.242-.314.272-.21.455-.559.55-1.049.092-.47.05-.802-.124-.995-.175-.193-.523-.29-1.047-.29zM12 5.688C5.373 5.688 0 8.514 0 12s5.373 6.313 12 6.313S24 15.486 24 12c0-3.486-5.373-6.312-12-6.312zm-3.26 7.451c-.261.25-.575.438-.917.551-.336.108-.765.164-1.285.164H5.357l-.327 1.681H3.652l1.23-6.326h2.65c.797 0 1.378.209 1.744.628.366.418.476 1.002.33 1.752a2.836 2.836 0 0 1-.305.847c-.143.255-.33.49-.561.703zm4.024.715l.543-2.799c.063-.318.039-.536-.068-.651-.107-.116-.336-.174-.687-.174H11.46l-.704 3.625H9.388l1.23-6.327h1.367l-.327 1.682h1.218c.767 0 1.295.134 1.586.401s.378.7.263 1.299l-.572 2.944h-1.389zm7.597-2.265a2.782 2.782 0 0 1-.305.847c-.143.255-.33.49-.561.703a2.44 2.44 0 0 1-.917.551c-.336.108-.765.164-1.286.164h-1.18l-.327 1.682h-1.378l1.23-6.326h2.649c.797 0 1.378.209 1.744.628.366.417.477 1.001.331 1.751zM17.766 10.207h-.943l-.516 2.648h.838c.557 0 .971-.105 1.242-.314.272-.21.455-.559.551-1.049.092-.47.049-.802-.125-.995s-.524-.29-1.047-.29z"/></symbol>
+          <symbol id="lg-mysql" viewBox="0 0 24 24"><path fill="#fff" d="M16.405 5.501c-.115 0-.193.014-.274.033v.013h.014c.054.104.146.18.214.273.054.107.1.214.154.32l.014-.015c.094-.066.14-.172.14-.333-.04-.047-.046-.094-.08-.14-.04-.067-.126-.1-.18-.153zM5.77 18.695h-.927a50.854 50.854 0 00-.27-4.41h-.008l-1.41 4.41H2.45l-1.4-4.41h-.01a72.892 72.892 0 00-.195 4.41H0c.055-1.966.192-3.81.41-5.53h1.15l1.335 4.064h.008l1.347-4.064h1.095c.242 2.015.384 3.86.428 5.53zm4.017-4.08c-.378 2.045-.876 3.533-1.492 4.46-.482.716-1.01 1.073-1.583 1.073-.153 0-.34-.046-.566-.138v-.494c.11.017.24.026.386.026.268 0 .483-.075.647-.222.197-.18.295-.382.295-.605 0-.155-.077-.47-.23-.944L6.23 14.615h.91l.727 2.36c.164.536.233.91.205 1.123.4-1.064.678-2.227.835-3.483zm12.325 4.08h-2.63v-5.53h.885v4.85h1.745zm-3.32.135l-1.016-.5c.09-.076.177-.158.255-.25.433-.506.648-1.258.648-2.253 0-1.83-.718-2.746-2.155-2.746-.704 0-1.254.232-1.65.697-.43.508-.646 1.256-.646 2.245 0 .972.19 1.686.574 2.14.35.41.877.615 1.583.615.264 0 .506-.033.725-.098l1.325.772.36-.622zM15.5 17.588c-.225-.36-.337-.94-.337-1.736 0-1.393.424-2.09 1.27-2.09.443 0 .77.167.977.5.224.362.336.936.336 1.723 0 1.404-.424 2.108-1.27 2.108-.445 0-.77-.167-.978-.5zm-1.658-.425c0 .47-.172.856-.516 1.156-.344.3-.803.45-1.384.45-.543 0-1.064-.172-1.573-.515l.237-.476c.438.22.833.328 1.19.328.332 0 .593-.073.783-.22a.754.754 0 00.3-.615c0-.33-.23-.61-.648-.845-.388-.213-1.163-.657-1.163-.657-.422-.307-.632-.636-.632-1.177 0-.45.157-.81.47-1.085.315-.278.72-.415 1.22-.415.512 0 .98.136 1.4.41l-.213.476a2.726 2.726 0 00-1.064-.23c-.283 0-.502.068-.654.206a.685.685 0 00-.248.524c0 .328.234.61.666.85.393.215 1.187.67 1.187.67.433.305.648.63.648 1.168zm9.382-5.852c-.535-.014-.95.04-1.297.188-.1.04-.26.04-.274.167.055.053.063.14.11.214.08.134.218.313.346.407.14.11.28.216.427.31.26.16.555.255.81.416.145.094.293.213.44.313.073.05.12.14.214.172v-.02c-.046-.06-.06-.147-.105-.214-.067-.067-.134-.127-.2-.193a3.223 3.223 0 00-.695-.675c-.214-.146-.682-.35-.77-.595l-.013-.014c.146-.013.32-.066.46-.106.227-.06.435-.047.67-.106.106-.027.213-.06.32-.094v-.06c-.12-.12-.21-.283-.334-.395a8.867 8.867 0 00-1.104-.823c-.21-.134-.476-.22-.697-.334-.08-.04-.214-.06-.26-.127-.12-.146-.19-.34-.275-.514a17.69 17.69 0 01-.547-1.163c-.12-.262-.193-.523-.34-.763-.69-1.137-1.437-1.826-2.586-2.5-.247-.14-.543-.2-.856-.274-.167-.008-.334-.02-.5-.027-.11-.047-.216-.174-.31-.235-.38-.24-1.364-.76-1.644-.072-.18.434.267.862.422 1.082.115.153.26.328.34.5.047.116.06.235.107.356.106.294.207.622.347.897.073.14.153.287.247.413.054.073.146.107.167.227-.094.136-.1.334-.154.5-.24.757-.146 1.693.194 2.25.107.166.362.534.703.393.3-.12.234-.5.32-.835.02-.08.007-.133.048-.187v.015c.094.188.188.367.274.555.206.328.566.668.867.895.16.12.287.328.487.402v-.02h-.015c-.043-.058-.1-.086-.154-.133a3.445 3.445 0 01-.35-.4 8.76 8.76 0 01-.747-1.218c-.11-.21-.202-.436-.29-.643-.04-.08-.04-.2-.107-.24-.1.146-.247.273-.32.453-.127.288-.14.642-.188 1.01-.027.007-.014 0-.027.014-.214-.052-.287-.274-.367-.46-.2-.475-.233-1.238-.06-1.785.047-.14.247-.582.167-.716-.042-.127-.174-.2-.247-.303a2.478 2.478 0 01-.24-.427c-.16-.374-.24-.788-.414-1.162-.08-.173-.22-.354-.334-.513-.127-.18-.267-.307-.368-.52-.033-.073-.08-.194-.027-.274.014-.054.042-.075.094-.09.088-.072.335.022.422.062.247.1.455.194.662.334.094.066.195.193.315.226h.14c.214.047.455.014.655.073.355.114.675.28.962.46a5.953 5.953 0 012.085 2.286c.08.154.115.295.188.455.14.33.313.663.455.982.14.315.275.636.476.897.1.14.502.213.682.286.133.06.34.115.46.188.23.14.454.3.67.454.11.076.443.243.463.378z"/></symbol>
+          <symbol id="lg-rabbitmq" viewBox="0 0 24 24"><path fill="#fff" d="M23.035 9.601h-7.677a.956.956 0 01-.962-.962V.962a.956.956 0 00-.962-.956H10.56a.956.956 0 00-.962.956V8.64a.956.956 0 01-.962.962H5.762a.956.956 0 01-.961-.962V.962A.956.956 0 003.839 0H.959a.956.956 0 00-.956.962v22.076A.956.956 0 00.965 24h22.07a.956.956 0 00.962-.962V10.58a.956.956 0 00-.962-.98zm-3.86 8.152a1.437 1.437 0 01-1.437 1.443h-1.924a1.437 1.437 0 01-1.436-1.443v-1.917a1.437 1.437 0 011.436-1.443h1.924a1.437 1.437 0 011.437 1.443z"/></symbol>
+          <symbol id="lg-mongodb" viewBox="0 0 24 24"><path fill="#fff" d="M17.193 9.555c-1.264-5.58-4.252-7.414-4.573-8.115-.28-.394-.53-.954-.735-1.44-.036.495-.055.685-.523 1.184-.723.566-4.438 3.682-4.74 10.02-.282 5.912 4.27 9.435 4.888 9.884l.07.05A73.49 73.49 0 0111.91 24h.481c.114-1.032.284-2.056.51-3.07.417-.296.604-.463.85-.693a11.342 11.342 0 003.639-8.464c.01-.814-.103-1.662-.197-2.218zm-5.336 8.195s0-8.291.275-8.29c.213 0 .49 10.695.49 10.695-.381-.045-.765-1.76-.765-2.405z"/></symbol>
+          <symbol id="lg-tailwindcss" viewBox="0 0 24 24"><path fill="#fff" d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z"/></symbol>
+          <symbol id="lg-python" viewBox="0 0 24 24"><path fill="#fff" d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/></symbol>
+          <symbol id="lg-nodedotjs" viewBox="0 0 24 24"><path fill="#fff" d="M11.998,24c-0.321,0-0.641-0.084-0.922-0.247l-2.936-1.737c-0.438-0.245-0.224-0.332-0.08-0.383 c0.585-0.203,0.703-0.25,1.328-0.604c0.065-0.037,0.151-0.023,0.218,0.017l2.256,1.339c0.082,0.045,0.197,0.045,0.272,0l8.795-5.076 c0.082-0.047,0.134-0.141,0.134-0.238V6.921c0-0.099-0.053-0.192-0.137-0.242l-8.791-5.072c-0.081-0.047-0.189-0.047-0.271,0 L3.075,6.68C2.99,6.729,2.936,6.825,2.936,6.921v10.15c0,0.097,0.054,0.189,0.139,0.235l2.409,1.392 c1.307,0.654,2.108-0.116,2.108-0.89V7.787c0-0.142,0.114-0.253,0.256-0.253h1.115c0.139,0,0.255,0.112,0.255,0.253v10.021 c0,1.745-0.95,2.745-2.604,2.745c-0.508,0-0.909,0-2.026-0.551L2.28,18.675c-0.57-0.329-0.922-0.945-0.922-1.604V6.921 c0-0.659,0.353-1.275,0.922-1.603l8.795-5.082c0.557-0.315,1.296-0.315,1.848,0l8.794,5.082c0.57,0.329,0.924,0.944,0.924,1.603 v10.15c0,0.659-0.354,1.273-0.924,1.604l-8.794,5.078C12.643,23.916,12.324,24,11.998,24z M19.099,13.993 c0-1.9-1.284-2.406-3.987-2.763c-2.731-0.361-3.009-0.548-3.009-1.187c0-0.528,0.235-1.233,2.258-1.233 c1.807,0,2.473,0.389,2.747,1.607c0.024,0.115,0.129,0.199,0.247,0.199h1.141c0.071,0,0.138-0.031,0.186-0.081 c0.048-0.054,0.074-0.123,0.067-0.196c-0.177-2.098-1.571-3.076-4.388-3.076c-2.508,0-4.004,1.058-4.004,2.833 c0,1.925,1.488,2.457,3.895,2.695c2.88,0.282,3.103,0.703,3.103,1.269c0,0.983-0.789,1.402-2.642,1.402 c-2.327,0-2.839-0.584-3.011-1.742c-0.02-0.124-0.126-0.215-0.253-0.215h-1.137c-0.141,0-0.254,0.112-0.254,0.253 c0,1.482,0.806,3.248,4.655,3.248C17.501,17.007,19.099,15.91,19.099,13.993z"/></symbol>
+          <symbol id="lg-postgresql" viewBox="0 0 24 24"><path fill="#fff" d="M23.5594 14.7228a.5269.5269 0 0 0-.0563-.1191c-.139-.2632-.4768-.3418-1.0074-.2321-1.6533.3411-2.2935.1312-2.5256-.0191 1.342-2.0482 2.445-4.522 3.0411-6.8297.2714-1.0507.7982-3.5237.1222-4.7316a1.5641 1.5641 0 0 0-.1509-.235C21.6931.9086 19.8007.0248 17.5099.0005c-1.4947-.0158-2.7705.3461-3.1161.4794a9.449 9.449 0 0 0-.5159-.0816 8.044 8.044 0 0 0-1.3114-.1278c-1.1822-.0184-2.2038.2642-3.0498.8406-.8573-.3211-4.7888-1.645-7.2219.0788C.9359 2.1526.3086 3.8733.4302 6.3043c.0409.818.5069 3.334 1.2423 5.7436.4598 1.5065.9387 2.7019 1.4334 3.582.553.9942 1.1259 1.5933 1.7143 1.7895.4474.1491 1.1327.1441 1.8581-.7279.8012-.9635 1.5903-1.8258 1.9446-2.2069.4351.2355.9064.3625 1.39.3772a.0569.0569 0 0 0 .0004.0041 11.0312 11.0312 0 0 0-.2472.3054c-.3389.4302-.4094.5197-1.5002.7443-.3102.064-1.1344.2339-1.1464.8115-.0025.1224.0329.2309.0919.3268.2269.4231.9216.6097 1.015.6331 1.3345.3335 2.5044.092 3.3714-.6787-.017 2.231.0775 4.4174.3454 5.0874.2212.5529.7618 1.9045 2.4692 1.9043.2505 0 .5263-.0291.8296-.0941 1.7819-.3821 2.5557-1.1696 2.855-2.9059.1503-.8707.4016-2.8753.5388-4.1012.0169-.0703.0357-.1207.057-.1362.0007-.0005.0697-.0471.4272.0307a.3673.3673 0 0 0 .0443.0068l.2539.0223.0149.001c.8468.0384 1.9114-.1426 2.5312-.4308.6438-.2988 1.8057-1.0323 1.5951-1.6698zM2.371 11.8765c-.7435-2.4358-1.1779-4.8851-1.2123-5.5719-.1086-2.1714.4171-3.6829 1.5623-4.4927 1.8367-1.2986 4.8398-.5408 6.108-.13-.0032.0032-.0066.0061-.0098.0094-2.0238 2.044-1.9758 5.536-1.9708 5.7495-.0002.0823.0066.1989.0162.3593.0348.5873.0996 1.6804-.0735 2.9184-.1609 1.1504.1937 2.2764.9728 3.0892.0806.0841.1648.1631.2518.2374-.3468.3714-1.1004 1.1926-1.9025 2.1576-.5677.6825-.9597.5517-1.0886.5087-.3919-.1307-.813-.5871-1.2381-1.3223-.4796-.839-.9635-2.0317-1.4155-3.5126zm6.0072 5.0871c-.1711-.0428-.3271-.1132-.4322-.1772.0889-.0394.2374-.0902.4833-.1409 1.2833-.2641 1.4815-.4506 1.9143-1.0002.0992-.126.2116-.2687.3673-.4426a.3549.3549 0 0 0 .0737-.1298c.1708-.1513.2724-.1099.4369-.0417.156.0646.3078.26.3695.4752.0291.1016.0619.2945-.0452.4444-.9043 1.2658-2.2216 1.2494-3.1676 1.0128zm2.094-3.988-.0525.141c-.133.3566-.2567.6881-.3334 1.003-.6674-.0021-1.3168-.2872-1.8105-.8024-.6279-.6551-.9131-1.5664-.7825-2.5004.1828-1.3079.1153-2.4468.079-3.0586-.005-.0857-.0095-.1607-.0122-.2199.2957-.2621 1.6659-.9962 2.6429-.7724.4459.1022.7176.4057.8305.928.5846 2.7038.0774 3.8307-.3302 4.7363-.084.1866-.1633.3629-.2311.5454zm7.3637 4.5725c-.0169.1768-.0358.376-.0618.5959l-.146.4383a.3547.3547 0 0 0-.0182.1077c-.0059.4747-.054.6489-.115.8693-.0634.2292-.1353.4891-.1794 1.0575-.11 1.4143-.8782 2.2267-2.4172 2.5565-1.5155.3251-1.7843-.4968-2.0212-1.2217a6.5824 6.5824 0 0 0-.0769-.2266c-.2154-.5858-.1911-1.4119-.1574-2.5551.0165-.5612-.0249-1.9013-.3302-2.6462.0044-.2932.0106-.5909.019-.8918a.3529.3529 0 0 0-.0153-.1126 1.4927 1.4927 0 0 0-.0439-.208c-.1226-.4283-.4213-.7866-.7797-.9351-.1424-.059-.4038-.1672-.7178-.0869.067-.276.1831-.5875.309-.9249l.0529-.142c.0595-.16.134-.3257.213-.5012.4265-.9476 1.0106-2.2453.3766-5.1772-.2374-1.0981-1.0304-1.6343-2.2324-1.5098-.7207.0746-1.3799.3654-1.7088.5321a5.6716 5.6716 0 0 0-.1958.1041c.0918-1.1064.4386-3.1741 1.7357-4.4823a4.0306 4.0306 0 0 1 .3033-.276.3532.3532 0 0 0 .1447-.0644c.7524-.5706 1.6945-.8506 2.802-.8325.4091.0067.8017.0339 1.1742.081 1.939.3544 3.2439 1.4468 4.0359 2.3827.8143.9623 1.2552 1.9315 1.4312 2.4543-1.3232-.1346-2.2234.1268-2.6797.779-.9926 1.4189.543 4.1729 1.2811 5.4964.1353.2426.2522.4522.2889.5413.2403.5825.5515.9713.7787 1.2552.0696.087.1372.1714.1885.245-.4008.1155-1.1208.3825-1.0552 1.717-.0123.1563-.0423.4469-.0834.8148-.0461.2077-.0702.4603-.0994.7662zm.8905-1.6211c-.0405-.8316.2691-.9185.5967-1.0105a2.8566 2.8566 0 0 0 .135-.0406 1.202 1.202 0 0 0 .1342.103c.5703.3765 1.5823.4213 3.0068.1344-.2016.1769-.5189.3994-.9533.6011-.4098.1903-1.0957.333-1.7473.3636-.7197.0336-1.0859-.0807-1.1721-.151zm.5695-9.2712c-.0059.3508-.0542.6692-.1054 1.0017-.055.3576-.112.7274-.1264 1.1762-.0142.4368.0404.8909.0932 1.3301.1066.887.216 1.8003-.2075 2.7014a3.5272 3.5272 0 0 1-.1876-.3856c-.0527-.1276-.1669-.3326-.3251-.6162-.6156-1.1041-2.0574-3.6896-1.3193-4.7446.3795-.5427 1.3408-.5661 2.1781-.463zm.2284 7.0137a12.3762 12.3762 0 0 0-.0853-.1074l-.0355-.0444c.7262-1.1995.5842-2.3862.4578-3.4385-.0519-.4318-.1009-.8396-.0885-1.2226.0129-.4061.0666-.7543.1185-1.0911.0639-.415.1288-.8443.1109-1.3505.0134-.0531.0188-.1158.0118-.1902-.0457-.4855-.5999-1.938-1.7294-3.253-.6076-.7073-1.4896-1.4972-2.6889-2.0395.5251-.1066 1.2328-.2035 2.0244-.1859 2.0515.0456 3.6746.8135 4.8242 2.2824a.908.908 0 0 1 .0667.1002c.7231 1.3556-.2762 6.2751-2.9867 10.5405zm-8.8166-6.1162c-.025.1794-.3089.4225-.6211.4225a.5821.5821 0 0 1-.0809-.0056c-.1873-.026-.3765-.144-.5059-.3156-.0458-.0605-.1203-.178-.1055-.2844.0055-.0401.0261-.0985.0925-.1488.1182-.0894.3518-.1226.6096-.0867.3163.0441.6426.1938.6113.4186zm7.9305-.4114c.0111.0792-.049.201-.1531.3102-.0683.0717-.212.1961-.4079.2232a.5456.5456 0 0 1-.075.0052c-.2935 0-.5414-.2344-.5607-.3717-.024-.1765.2641-.3106.5611-.352.297-.0414.6111.0088.6356.1851z"/></symbol>
+          <symbol id="lg-redis" viewBox="0 0 24 24"><path fill="#fff" d="M22.71 13.145c-1.66 2.092-3.452 4.483-7.038 4.483-3.203 0-4.397-2.825-4.48-5.12.701 1.484 2.073 2.685 4.214 2.63 4.117-.133 6.94-3.852 6.94-7.239 0-4.05-3.022-6.972-8.268-6.972-3.752 0-8.4 1.428-11.455 3.685C2.59 6.937 3.885 9.958 4.35 9.626c2.648-1.904 4.748-3.13 6.784-3.744C8.12 9.244.886 17.05 0 18.425c.1 1.261 1.66 4.648 2.424 4.648.232 0 .431-.133.664-.365a100.49 100.49 0 0 0 5.54-6.765c.222 3.104 1.748 6.898 6.014 6.898 3.819 0 7.604-2.756 9.33-8.965.2-.764-.73-1.361-1.261-.73zm-4.349-5.013c0 1.959-1.926 2.922-3.685 2.922-.941 0-1.664-.247-2.235-.568 1.051-1.592 2.092-3.225 3.21-4.973 1.972.334 2.71 1.43 2.71 2.619z"/></symbol>
+          <symbol id="lg-docker" viewBox="0 0 24 24"><path fill="#fff" d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186h-2.12a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.92 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.082.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338.001-.676.03-1.01.087-.248-1.7-1.653-2.53-1.716-2.566l-.344-.199-.226.327c-.284.438-.49.922-.612 1.43-.23.97-.09 1.882.403 2.661-.595.332-1.55.413-1.744.42H.751a.751.751 0 00-.75.748 11.376 11.376 0 00.692 4.062c.545 1.428 1.355 2.48 2.41 3.124 1.18.723 3.1 1.137 5.275 1.137.983.003 1.963-.086 2.93-.266a12.248 12.248 0 003.823-1.389c.98-.567 1.86-1.288 2.61-2.136 1.252-1.418 1.998-2.997 2.553-4.4h.221c1.372 0 2.215-.549 2.68-1.009.309-.293.55-.65.707-1.046l.098-.288Z"/></symbol>
+          <symbol id="lg-apachekafka" viewBox="0 0 24 24"><path fill="#fff" d="M9.71 2.136a1.43 1.43 0 0 0-2.047 0h-.007a1.48 1.48 0 0 0-.421 1.042c0 .41.161.777.422 1.039l.007.007c.257.264.616.426 1.019.426.404 0 .766-.162 1.027-.426l.003-.007c.261-.262.421-.629.421-1.039 0-.408-.159-.777-.421-1.042H9.71zM8.683 22.295c.404 0 .766-.167 1.027-.429l.003-.008c.261-.261.421-.631.421-1.036 0-.41-.159-.778-.421-1.044H9.71a1.42 1.42 0 0 0-1.027-.432 1.4 1.4 0 0 0-1.02.432h-.007c-.26.266-.422.634-.422 1.044 0 .406.161.775.422 1.036l.007.008c.258.262.617.429 1.02.429zm7.89-4.462c.359-.096.683-.33.882-.684l.027-.052a1.47 1.47 0 0 0 .114-1.067 1.454 1.454 0 0 0-.675-.896l-.021-.014a1.425 1.425 0 0 0-1.078-.132c-.36.091-.684.335-.881.686-.2.349-.241.75-.146 1.119.099.363.33.691.675.896h.002c.346.203.737.239 1.101.144zm-6.405-7.342a2.083 2.083 0 0 0-1.485-.627c-.58 0-1.103.242-1.482.627-.378.385-.612.916-.612 1.507s.233 1.124.612 1.514a2.08 2.08 0 0 0 2.967 0c.379-.39.612-.923.612-1.514s-.233-1.122-.612-1.507zm-.835-2.51c.843.141 1.6.552 2.178 1.144h.004c.092.093.182.196.265.299l1.446-.851a3.176 3.176 0 0 1-.047-1.808 3.149 3.149 0 0 1 1.456-1.926l.025-.016a3.062 3.062 0 0 1 2.345-.306c.77.21 1.465.721 1.898 1.482v.002c.431.757.518 1.626.313 2.408a3.145 3.145 0 0 1-1.456 1.928l-.198.118h-.02a3.095 3.095 0 0 1-2.154.201 3.127 3.127 0 0 1-1.514-.944l-1.444.848a4.162 4.162 0 0 1 0 2.879l1.444.846c.413-.47.939-.789 1.514-.944a3.041 3.041 0 0 1 2.371.319l.048.023v.002a3.17 3.17 0 0 1 1.408 1.906 3.215 3.215 0 0 1-.313 2.405l-.026.053-.003-.005a3.147 3.147 0 0 1-1.867 1.436 3.096 3.096 0 0 1-2.371-.318v-.006a3.156 3.156 0 0 1-1.456-1.927 3.175 3.175 0 0 1 .047-1.805l-1.446-.848a3.905 3.905 0 0 1-.265.294l-.004.005a3.938 3.938 0 0 1-2.178 1.138v1.699a3.09 3.09 0 0 1 1.56.862l.002.004c.565.572.914 1.368.914 2.243 0 .873-.35 1.664-.914 2.239l-.002.009a3.1 3.1 0 0 1-2.21.931 3.1 3.1 0 0 1-2.206-.93h-.002v-.009a3.186 3.186 0 0 1-.916-2.239c0-.875.35-1.672.916-2.243v-.004h.002a3.1 3.1 0 0 1 1.558-.862v-1.699a3.926 3.926 0 0 1-2.176-1.138l-.006-.005a4.098 4.098 0 0 1-1.173-2.874c0-1.122.452-2.136 1.173-2.872h.006a3.947 3.947 0 0 1 2.176-1.144V6.289a3.137 3.137 0 0 1-1.558-.864h-.002v-.004a3.192 3.192 0 0 1-.916-2.243c0-.871.35-1.669.916-2.243l.002-.002A3.084 3.084 0 0 1 8.683 0c.861 0 1.641.355 2.21.932v.002h.002c.565.574.914 1.372.914 2.243 0 .876-.35 1.667-.914 2.243l-.002.005a3.142 3.142 0 0 1-1.56.864v1.692zm8.121-1.129l-.012-.019a1.452 1.452 0 0 0-.87-.668 1.43 1.43 0 0 0-1.103.146h.002c-.347.2-.58.529-.677.896-.095.365-.054.768.146 1.119l.007.009c.2.347.519.579.874.673.357.103.755.059 1.098-.144l.019-.009a1.47 1.47 0 0 0 .657-.885 1.493 1.493 0 0 0-.141-1.118"/></symbol>
+          <symbol id="lg-elasticsearch" viewBox="0 0 24 24"><path fill="#fff" d="M13.394 0C8.683 0 4.609 2.716 2.644 6.667h15.641a4.77 4.77 0 0 0 3.073-1.11c.446-.375.864-.785 1.247-1.243l.001-.002A11.974 11.974 0 0 0 13.394 0zM1.804 8.889a12.009 12.009 0 0 0 0 6.222h14.7a3.111 3.111 0 1 0 0-6.222zm.84 8.444C4.61 21.283 8.684 24 13.395 24c3.701 0 7.011-1.677 9.212-4.312l-.001-.002a9.958 9.958 0 0 0-1.247-1.243 4.77 4.77 0 0 0-3.073-1.11z"/></symbol>
+          <symbol id="lg-go" viewBox="0 0 24 24"><path fill="#fff" d="M1.811 10.231c-.047 0-.058-.023-.035-.059l.246-.315c.023-.035.081-.058.128-.058h4.172c.046 0 .058.035.035.07l-.199.303c-.023.036-.082.07-.117.07zM.047 11.306c-.047 0-.059-.023-.035-.058l.245-.316c.023-.035.082-.058.129-.058h5.328c.047 0 .07.035.058.07l-.093.28c-.012.047-.058.07-.105.07zm2.828 1.075c-.047 0-.059-.035-.035-.07l.163-.292c.023-.035.07-.07.117-.07h2.337c.047 0 .07.035.07.082l-.023.28c0 .047-.047.082-.082.082zm12.129-2.36c-.736.187-1.239.327-1.963.514-.176.046-.187.058-.34-.117-.174-.199-.303-.327-.548-.444-.737-.362-1.45-.257-2.115.175-.795.514-1.204 1.274-1.192 2.22.011.935.654 1.706 1.577 1.835.795.105 1.46-.175 1.987-.77.105-.13.198-.27.315-.434H10.47c-.245 0-.304-.152-.222-.35.152-.362.432-.97.596-1.274a.315.315 0 01.292-.187h4.253c-.023.316-.023.631-.07.947a4.983 4.983 0 01-.958 2.29c-.841 1.11-1.94 1.8-3.33 1.986-1.145.152-2.209-.07-3.143-.77-.865-.655-1.356-1.52-1.484-2.595-.152-1.274.222-2.419.993-3.424.83-1.086 1.928-1.776 3.272-2.02 1.098-.2 2.15-.07 3.096.571.62.41 1.063.97 1.356 1.648.07.105.023.164-.117.2m3.868 6.461c-1.064-.024-2.034-.328-2.852-1.029a3.665 3.665 0 01-1.262-2.255c-.21-1.32.152-2.489.947-3.529.853-1.122 1.881-1.706 3.272-1.95 1.192-.21 2.314-.095 3.33.595.923.63 1.496 1.484 1.648 2.605.198 1.578-.257 2.863-1.344 3.962-.771.783-1.718 1.273-2.805 1.495-.315.06-.63.07-.934.106zm2.78-4.72c-.011-.153-.011-.27-.034-.387-.21-1.157-1.274-1.81-2.384-1.554-1.087.245-1.788.935-2.045 2.033-.21.912.234 1.835 1.075 2.21.643.28 1.285.244 1.905-.07.923-.48 1.425-1.228 1.484-2.233z"/></symbol>
+          <symbol id="lg-nginx" viewBox="0 0 24 24"><path fill="#fff" d="M12 0L1.605 6v12L12 24l10.395-6V6L12 0zm6 16.59c0 .705-.646 1.29-1.529 1.29-.631 0-1.351-.255-1.801-.81l-6-7.141v6.66c0 .721-.57 1.29-1.274 1.29H7.32c-.721 0-1.29-.6-1.29-1.29V7.41c0-.705.63-1.29 1.5-1.29.646 0 1.38.255 1.83.81l5.97 7.141V7.41c0-.721.6-1.29 1.29-1.29h.075c.72 0 1.29.6 1.29 1.29v9.18H18z"/></symbol>
+          <symbol id="lg-graphql" viewBox="0 0 24 24"><path fill="#fff" d="M12.002 0a2.138 2.138 0 1 0 0 4.277 2.138 2.138 0 1 0 0-4.277zm8.54 4.931a2.138 2.138 0 1 0 0 4.277 2.138 2.138 0 1 0 0-4.277zm0 9.862a2.138 2.138 0 1 0 0 4.277 2.138 2.138 0 1 0 0-4.277zm-8.54 4.931a2.138 2.138 0 1 0 0 4.276 2.138 2.138 0 1 0 0-4.276zm-8.542-4.93a2.138 2.138 0 1 0 0 4.276 2.138 2.138 0 1 0 0-4.277zm0-9.863a2.138 2.138 0 1 0 0 4.277 2.138 2.138 0 1 0 0-4.277zm8.542-3.378L2.953 6.777v10.448l9.049 5.224 9.047-5.224V6.777zm0 1.601 7.66 13.27H4.34zm-1.387.371L3.97 15.037V7.363zm2.774 0 6.646 3.838v7.674zM5.355 17.44h13.293l-6.646 3.836z"/></symbol>
+          <symbol id="lg-apacheairflow" viewBox="0 0 24 24"><path fill="#fff" d="M17.195 16.822l4.002-4.102C23.55 10.308 23.934 5.154 24 .43a.396.396 0 0 0-.246-.373.392.392 0 0 0-.437.09l-6.495 6.658-4.102-4.003C10.309.45 5.154.066.43 0H.423a.397.397 0 0 0-.277.683l6.658 6.494-4.003 4.103C.45 13.692.065 18.846 0 23.57a.398.398 0 0 0 .683.282l6.494-6.657 3.934 3.837.17.165c2.41 2.353 7.565 2.737 12.288 2.803h.006a.397.397 0 0 0 .277-.683l-6.657-6.495zm-.409-9.476c.04.115.05.24.031.344-.17.96-1.593 2.538-4.304 3.87a.597.597 0 0 0-.08-.079c1.432-3.155 1.828-5.61 1.175-7.322l3.058 2.984.12.203zm-.131 9.44a.73.73 0 0 1-.347.031c-.96-.171-2.537-1.594-3.87-4.307a.656.656 0 0 0 .08-.078l-.001.001c3.155 1.432 5.61 1.83 7.324 1.174l-2.969 3.043M23.568.392a.05.05 0 0 1 .052-.011c.018.006.03.024.029.043-.065 4.655-.437 9.726-2.703 12.05-1.53 1.565-4.326 1.419-8.283-.377.006-.037.021-.07.02-.108 0-.044-.017-.082-.026-.123 2.83-1.39 4.315-3.037 4.506-4.115.057-.322-.009-.542-.102-.688l6.507-6.67V.392zM.393.43A.045.045 0 0 1 .382.38C.39.36.403.343.425.35c4.655.065 9.727.438 12.05 2.703l.002.002c1.56 1.527 1.415 4.323-.379 8.28-.033-.005-.062-.02-.097-.02h-.008c-.045.001-.084.019-.126.027-1.39-2.83-3.037-4.314-4.115-4.506-.323-.057-.542.01-.688.103L.393.43zm11.94 11.563a.331.331 0 0 1-.327.335H12a.332.332 0 0 1-.004-.661c.172.016.333.144.335.326h.002zm-5.12 4.661a.722.722 0 0 1-.03-.345c.17-.96 1.595-2.54 4.309-3.873.013.016.019.035.033.05.013.012.03.017.044.028-1.434 3.158-1.83 5.613-1.177 7.326l-3.041-2.967m-.006-9.659a.735.735 0 0 1 .345-.031c.961.17 2.54 1.594 3.871 4.306a.597.597 0 0 0-.079.08c-2.167-.983-4.007-1.484-5.498-1.484-.68 0-1.289.103-1.825.308L7.128 7.35M.43 23.607c-.018.018-.038.015-.052.01-.019-.007-.028-.021-.028-.043.065-4.654.437-9.725 2.703-12.049 1.527-1.565 4.325-1.419 8.286.378-.006.035-.02.067-.02.104 0 .043.018.083.026.124-2.831 1.391-4.317 3.04-4.51 4.117-.057.322.01.542.103.688L.43 23.607zm23.144.042c-4.655-.065-9.726-.437-12.05-2.703l-.005-.006c-1.56-1.526-1.412-4.322.383-8.279.033.005.064.02.098.02h.009c.043 0 .08-.018.122-.027 1.39 2.832 3.036 4.317 4.115 4.51.083.014.16.021.23.021a.776.776 0 0 0 .45-.133l6.68 6.516c.02.02.016.04.01.052a.042.042 0 0 1-.042.029z"/></symbol>
+          <symbol id="lg-clickhouse" viewBox="0 0 24 24"><path fill="#fff" d="M21.333 10H24v4h-2.667ZM16 1.335h2.667v21.33H16Zm-5.333 0h2.666v21.33h-2.666ZM0 22.665V1.335h2.667v21.33zm5.333-21.33H8v21.33H5.333Z"/></symbol>
+          <symbol id="lg-kubernetes" viewBox="0 0 24 24"><path fill="#fff" d="M10.204 14.35l.007.01-.999 2.413a5.171 5.171 0 0 1-2.075-2.597l2.578-.437.004.005a.44.44 0 0 1 .484.606zm-.833-2.129a.44.44 0 0 0 .173-.756l.002-.011L7.585 9.7a5.143 5.143 0 0 0-.73 3.255l2.514-.725.002-.009zm1.145-1.98a.44.44 0 0 0 .699-.337l.01-.005.15-2.62a5.144 5.144 0 0 0-3.01 1.442l2.147 1.523.004-.002zm.76 2.75l.723.349.722-.347.18-.78-.5-.623h-.804l-.5.623.179.779zm1.5-3.095a.44.44 0 0 0 .7.336l.008.003 2.134-1.513a5.188 5.188 0 0 0-2.992-1.442l.148 2.615.002.001zm10.876 5.97l-5.773 7.181a1.6 1.6 0 0 1-1.248.594l-9.261.003a1.6 1.6 0 0 1-1.247-.596l-5.776-7.18a1.583 1.583 0 0 1-.307-1.34L2.1 5.573c.108-.47.425-.864.863-1.073L11.305.513a1.606 1.606 0 0 1 1.385 0l8.345 3.985c.438.209.755.604.863 1.073l2.062 8.955c.108.47-.005.963-.308 1.34zm-3.289-2.057c-.042-.01-.103-.026-.145-.034-.174-.033-.315-.025-.479-.038-.35-.037-.638-.067-.895-.148-.105-.04-.18-.165-.216-.216l-.201-.059a6.45 6.45 0 0 0-.105-2.332 6.465 6.465 0 0 0-.936-2.163c.052-.047.15-.133.177-.159.008-.09.001-.183.094-.282.197-.185.444-.338.743-.522.142-.084.273-.137.415-.242.032-.024.076-.062.11-.089.24-.191.295-.52.123-.736-.172-.216-.506-.236-.745-.045-.034.027-.08.062-.111.088-.134.116-.217.23-.33.35-.246.25-.45.458-.673.609-.097.056-.239.037-.303.033l-.19.135a6.545 6.545 0 0 0-4.146-2.003l-.012-.223c-.065-.062-.143-.115-.163-.25-.022-.268.015-.557.057-.905.023-.163.061-.298.068-.475.001-.04-.001-.099-.001-.142 0-.306-.224-.555-.5-.555-.275 0-.499.249-.499.555l.001.014c0 .041-.002.092 0 .128.006.177.044.312.067.475.042.348.078.637.056.906a.545.545 0 0 1-.162.258l-.012.211a6.424 6.424 0 0 0-4.166 2.003 8.373 8.373 0 0 1-.18-.128c-.09.012-.18.04-.297-.029-.223-.15-.427-.358-.673-.608-.113-.12-.195-.234-.329-.349-.03-.026-.077-.062-.111-.088a.594.594 0 0 0-.348-.132.481.481 0 0 0-.398.176c-.172.216-.117.546.123.737l.007.005.104.083c.142.105.272.159.414.242.299.185.546.338.743.522.076.082.09.226.1.288l.16.143a6.462 6.462 0 0 0-1.02 4.506l-.208.06c-.055.072-.133.184-.215.217-.257.081-.546.11-.895.147-.164.014-.305.006-.48.039-.037.007-.09.02-.133.03l-.004.002-.007.002c-.295.071-.484.342-.423.608.061.267.349.429.645.365l.007-.001.01-.003.129-.029c.17-.046.294-.113.448-.172.33-.118.604-.217.87-.256.112-.009.23.069.288.101l.217-.037a6.5 6.5 0 0 0 2.88 3.596l-.09.218c.033.084.069.199.044.282-.097.252-.263.517-.452.813-.091.136-.185.242-.268.399-.02.037-.045.095-.064.134-.128.275-.034.591.213.71.248.12.556-.007.69-.282v-.002c.02-.039.046-.09.062-.127.07-.162.094-.301.144-.458.132-.332.205-.68.387-.897.05-.06.13-.082.215-.105l.113-.205a6.453 6.453 0 0 0 4.609.012l.106.192c.086.028.18.042.256.155.136.232.229.507.342.84.05.156.074.295.145.457.016.037.043.09.062.129.133.276.442.402.69.282.247-.118.341-.435.213-.71-.02-.039-.045-.096-.065-.134-.083-.156-.177-.261-.268-.398-.19-.296-.346-.541-.443-.793-.04-.13.007-.21.038-.294-.018-.022-.059-.144-.083-.202a6.499 6.499 0 0 0 2.88-3.622c.064.01.176.03.213.038.075-.05.144-.114.28-.104.266.039.54.138.87.256.154.06.277.128.448.173.036.01.088.019.13.028l.009.003.007.001c.297.064.584-.098.645-.365.06-.266-.128-.537-.423-.608zM16.4 9.701l-1.95 1.746v.005a.44.44 0 0 0 .173.757l.003.01 2.526.728a5.199 5.199 0 0 0-.108-1.674A5.208 5.208 0 0 0 16.4 9.7zm-4.013 5.325a.437.437 0 0 0-.404-.232.44.44 0 0 0-.372.233h-.002l-1.268 2.292a5.164 5.164 0 0 0 3.326.003l-1.27-2.296h-.01zm1.888-1.293a.44.44 0 0 0-.27.036.44.44 0 0 0-.214.572l-.003.004 1.01 2.438a5.15 5.15 0 0 0 2.081-2.615l-2.6-.44-.004.005z"/></symbol>
+          <symbol id="lg-git" viewBox="0 0 24 24"><path fill="#fff" d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.441.516.515.658 1.258.438 1.9l2.658 2.66c.645-.223 1.387-.078 1.9.435.721.72.721 1.884 0 2.604-.719.719-1.881.719-2.6 0-.539-.541-.674-1.337-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348.713.721.713 1.883 0 2.6-.719.721-1.889.721-2.609 0-.719-.719-.719-1.879 0-2.598.182-.18.387-.316.605-.406V8.835c-.217-.091-.424-.222-.6-.401-.545-.545-.676-1.342-.396-2.009L7.636 3.7.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477c.604.604 1.582.604 2.186 0l10.43-10.43c.605-.603.605-1.582 0-2.187"/></symbol>
+          <symbol id="lg-grafana" viewBox="0 0 24 24"><path fill="#fff" d="M23.02 10.59a8.578 8.578 0 0 0-.862-3.034 8.911 8.911 0 0 0-1.789-2.445c.337-1.342-.413-2.505-.413-2.505-1.292-.08-2.113.4-2.416.62-.052-.02-.102-.044-.154-.064-.22-.089-.446-.172-.677-.247-.231-.073-.47-.14-.711-.197a9.867 9.867 0 0 0-.875-.161C14.557.753 12.94 0 12.94 0c-1.804 1.145-2.147 2.744-2.147 2.744l-.018.093c-.098.029-.2.057-.298.088-.138.042-.275.094-.413.143-.138.055-.275.107-.41.166a8.869 8.869 0 0 0-1.557.87l-.063-.029c-2.497-.955-4.716.195-4.716.195-.203 2.658.996 4.33 1.235 4.636a11.608 11.608 0 0 0-.607 2.635C1.636 12.677.953 15.014.953 15.014c1.926 2.214 4.171 2.351 4.171 2.351.003-.002.006-.002.006-.005.285.509.615.994.986 1.446.156.19.32.371.488.548-.704 2.009.099 3.68.099 3.68 2.144.08 3.553-.937 3.849-1.173a9.784 9.784 0 0 0 3.164.501h.08l.055-.003.107-.002.103-.005.003.002c1.01 1.44 2.788 1.646 2.788 1.646 1.264-1.332 1.337-2.653 1.337-2.94v-.058c0-.02-.003-.039-.003-.06.265-.187.52-.387.758-.6a7.875 7.875 0 0 0 1.415-1.7c1.43.083 2.437-.885 2.437-.885-.236-1.49-1.085-2.216-1.264-2.354l-.018-.013-.016-.013a.217.217 0 0 1-.031-.02c.008-.092.016-.18.02-.27.011-.162.016-.323.016-.48v-.253l-.005-.098-.008-.135a1.891 1.891 0 0 0-.01-.13c-.003-.042-.008-.083-.013-.125l-.016-.124-.018-.122a6.215 6.215 0 0 0-2.032-3.73 6.015 6.015 0 0 0-3.222-1.46 6.292 6.292 0 0 0-.85-.048l-.107.002h-.063l-.044.003-.104.008a4.777 4.777 0 0 0-3.335 1.695c-.332.4-.592.84-.768 1.297a4.594 4.594 0 0 0-.312 1.817l.003.091c.005.055.007.11.013.164a3.615 3.615 0 0 0 .698 1.82 3.53 3.53 0 0 0 1.827 1.282c.33.098.66.14.971.137.039 0 .078 0 .114-.002l.063-.003c.02 0 .041-.003.062-.003.034-.002.065-.007.099-.01.007 0 .018-.003.028-.003l.031-.005.06-.008a1.18 1.18 0 0 0 .112-.02c.036-.008.072-.013.109-.024a2.634 2.634 0 0 0 .914-.415c.028-.02.056-.041.085-.065a.248.248 0 0 0 .039-.35.244.244 0 0 0-.309-.06l-.078.042c-.09.044-.184.083-.283.116a2.476 2.476 0 0 1-.475.096c-.028.003-.054.006-.083.006l-.083.002c-.026 0-.054 0-.08-.002l-.102-.006h-.012l-.024.006c-.016-.003-.031-.003-.044-.006-.031-.002-.06-.007-.091-.01a2.59 2.59 0 0 1-.724-.213 2.557 2.557 0 0 1-.667-.438 2.52 2.52 0 0 1-.805-1.475 2.306 2.306 0 0 1-.029-.444l.006-.122v-.023l.002-.031c.003-.021.003-.04.005-.06a3.163 3.163 0 0 1 1.352-2.29 3.12 3.12 0 0 1 .937-.43 2.946 2.946 0 0 1 .776-.101h.06l.07.002.045.003h.026l.07.005a4.041 4.041 0 0 1 1.635.49 3.94 3.94 0 0 1 1.602 1.662 3.77 3.77 0 0 1 .397 1.414l.005.076.003.075c.002.026.002.05.002.075 0 .024.003.052 0 .07v.065l-.002.073-.008.174a6.195 6.195 0 0 1-.08.639 5.1 5.1 0 0 1-.267.927 5.31 5.31 0 0 1-.624 1.13 5.052 5.052 0 0 1-3.237 2.014 4.82 4.82 0 0 1-.649.066l-.039.003h-.287a6.607 6.607 0 0 1-1.716-.265 6.776 6.776 0 0 1-3.4-2.274 6.75 6.75 0 0 1-.746-1.15 6.616 6.616 0 0 1-.714-2.596l-.005-.083-.002-.02v-.056l-.003-.073v-.096l-.003-.104v-.07l.003-.163c.008-.22.026-.45.054-.678a8.707 8.707 0 0 1 .28-1.355c.128-.444.286-.872.473-1.277a7.04 7.04 0 0 1 1.456-2.1 5.925 5.925 0 0 1 .953-.763c.169-.111.343-.213.524-.306.089-.05.182-.091.273-.135.047-.02.093-.042.138-.062a7.177 7.177 0 0 1 .714-.267l.145-.045c.049-.015.098-.026.148-.041.098-.029.197-.052.296-.076.049-.013.1-.02.15-.033l.15-.032.151-.028.076-.013.075-.01.153-.024c.057-.01.114-.013.171-.023l.169-.021c.036-.003.073-.008.106-.01l.073-.008.036-.003.042-.002c.057-.003.114-.008.171-.01l.086-.006h.023l.037-.003.145-.007a7.999 7.999 0 0 1 1.708.125 7.917 7.917 0 0 1 2.048.68 8.253 8.253 0 0 1 1.672 1.09l.09.077.089.078c.06.052.114.107.171.159.057.052.112.106.166.16.052.055.107.107.159.164a8.671 8.671 0 0 1 1.41 1.978c.012.026.028.052.04.078l.04.078.075.156c.023.051.05.1.07.153l.065.15a8.848 8.848 0 0 1 .45 1.34.19.19 0 0 0 .201.142.186.186 0 0 0 .172-.184c.01-.246.002-.532-.024-.856z"/></symbol>
+          <symbol id="lg-prometheus" viewBox="0 0 24 24"><path fill="#fff" d="M12 0C5.373 0 0 5.372 0 12c0 6.627 5.373 12 12 12s12-5.373 12-12c0-6.628-5.373-12-12-12zm0 22.46c-1.885 0-3.414-1.26-3.414-2.814h6.828c0 1.553-1.528 2.813-3.414 2.813zm5.64-3.745H6.36v-2.046h11.28v2.046zm-.04-3.098H6.391c-.037-.043-.075-.086-.111-.13-1.155-1.401-1.427-2.133-1.69-2.879-.005-.025 1.4.287 2.395.511 0 0 .513.119 1.262.255-.72-.843-1.147-1.915-1.147-3.01 0-2.406 1.845-4.508 1.18-6.207.648.053 1.34 1.367 1.387 3.422.689-.951.977-2.69.977-3.755 0-1.103.727-2.385 1.454-2.429-.648 1.069.168 1.984.894 4.256.272.854.237 2.29.447 3.201.07-1.892.395-4.652 1.595-5.605-.529 1.2.079 2.702.494 3.424.671 1.164 1.078 2.047 1.078 3.716a4.642 4.642 0 01-1.11 2.996c.792-.149 1.34-.283 1.34-.283l2.573-.502s-.374 1.538-1.81 3.019z"/></symbol>
+          <symbol id="lg-fastapi" viewBox="0 0 24 24"><path fill="#fff" d="M12 .0387C5.3729.0384.0003 5.3931 0 11.9988c-.001 6.6066 5.372 11.9628 12 11.9625 6.628.0003 12.001-5.3559 12-11.9625-.0003-6.6057-5.3729-11.9604-12-11.96m-.829 5.4153h7.55l-7.5805 5.3284h5.1828L5.279 18.5436q2.9466-6.5444 5.892-13.0896"/></symbol>
+          <symbol id="lg-django" viewBox="0 0 24 24"><path fill="#fff" d="M11.146 0h3.924v18.166c-2.013.382-3.491.535-5.096.535-4.791 0-7.288-2.166-7.288-6.32 0-4.002 2.65-6.6 6.753-6.6.637 0 1.121.05 1.707.203zm0 9.143a3.894 3.894 0 00-1.325-.204c-1.988 0-3.134 1.223-3.134 3.365 0 2.09 1.096 3.236 3.109 3.236.433 0 .79-.025 1.35-.102V9.142zM21.314 6.06v9.098c0 3.134-.229 4.638-.917 5.937-.637 1.249-1.478 2.039-3.211 2.905l-3.644-1.733c1.733-.815 2.574-1.53 3.109-2.625.561-1.121.739-2.421.739-5.835V6.059h3.924zM17.39.021h3.924v4.026H17.39z"/></symbol>
+          <symbol id="lg-celery" viewBox="0 0 24 24"><path fill="#fff" d="M2.303 0A2.298 2.298 0 0 0 0 2.303v19.394A2.298 2.298 0 0 0 2.303 24h19.394A2.298 2.298 0 0 0 24 21.697V2.303A2.298 2.298 0 0 0 21.697 0zm8.177 3.072c4.098 0 7.028 1.438 7.68 1.764l-1.194 2.55c-2.442-1.057-4.993-1.41-5.672-1.41-1.574 0-2.17.922-2.17 1.763v8.494c0 .869.596 1.791 2.17 1.791.679 0 3.23-.38 5.672-1.41l1.194 2.496c-.435.271-3.637 1.818-7.68 1.818-1.112 0-4.64-.244-4.64-4.64V7.713c0-4.397 3.528-4.64 4.64-4.64z"/></symbol>
+          <symbol id="lg-apachespark" viewBox="0 0 24 24"><path fill="#fff" d="M10.812 0c-.425.013-.845.215-1.196.605a3.593 3.593 0 00-.493.722c-.355.667-.425 1.415-.556 2.143a551.9 551.9 0 00-.726 4.087c-.027.16-.096.227-.244.273C5.83 8.386 4.06 8.94 2.3 9.514c-.387.125-.773.289-1.114.506-1.042.665-1.196 1.753-.415 2.71.346.422.79.715 1.284.936 1.1.49 2.202.976 3.3 1.47.019.01.036.013.053.019h-.004l1.306.535c0 .023.002.045 0 .073-.2 2.03-.39 4.063-.58 6.095-.04.419-.012.831.134 1.23.317.87 1.065 1.148 1.881.701.372-.204.666-.497.937-.818 1.372-1.623 2.746-3.244 4.113-4.872.111-.133.205-.15.363-.098.349.117.697.231 1.045.347h.001c.02.012.045.02.073.03l.142.042c1.248.416 2.68.775 3.929 1.19.4.132.622.164 1.045.098.311-.048.592-.062.828-.236.602-.33.995-.957.988-1.682-.005-.427-.154-.813-.35-1.186-.82-1.556-1.637-3.113-2.461-4.666-.078-.148-.076-.243.037-.375 1.381-1.615 2.756-3.236 4.133-4.855.272-.32.513-.658.653-1.058.308-.878-.09-1.57-1-1.741a2.783 2.783 0 00-1.235.069c-1.974.521-3.947 1.041-5.918 1.57-.175.047-.26.015-.355-.144a353.08 353.08 0 00-2.421-4.018 4.61 4.61 0 00-.652-.849c-.371-.37-.802-.549-1.227-.536zm.172 3.703a.592.592 0 01.189.211c.87 1.446 1.742 2.89 2.609 4.338.07.118.135.16.277.121 1.525-.41 3.052-.813 4.579-1.217.367-.098.735-.193 1.103-.289a.399.399 0 01-.1.2c-1.259 1.48-2.516 2.962-3.779 4.438-.11.13-.12.22-.04.37.937 1.803 1.768 3.309 2.498 4.76l-3.696-1.019c-.538-.18-1.077-.358-1.615-.539-.163-.055-.25-.03-.36.1-1.248 1.488-2.504 2.97-3.759 4.454a.398.398 0 01-.18.132c.035-.378.068-.757.104-1.136.149-1.572.297-3.144.451-4.716-.03-.318.117-.405-.322-.545-1.493-.593-3.346-1.321-4.816-1.905a.595.595 0 01.24-.134c1.797-.57 3.595-1.14 5.394-1.705.127-.04.199-.092.211-.233.013-.148.05-.294.076-.441.241-1.363.483-2.726.726-4.088.068-.386.14-.771.21-1.157z"/></symbol>
+          <symbol id="lg-sqlite" viewBox="0 0 24 24"><path fill="#fff" d="M21.678.521c-1.032-.92-2.28-.55-3.513.544a8.71 8.71 0 0 0-.547.535c-2.109 2.237-4.066 6.38-4.674 9.544.237.48.422 1.093.544 1.561a13.044 13.044 0 0 1 .164.703s-.019-.071-.096-.296l-.05-.146a1.689 1.689 0 0 0-.033-.08c-.138-.32-.518-.995-.686-1.289-.143.423-.27.818-.376 1.176.484.884.778 2.4.778 2.4s-.025-.099-.147-.442c-.107-.303-.644-1.244-.772-1.464-.217.804-.304 1.346-.226 1.478.152.256.296.698.422 1.186.286 1.1.485 2.44.485 2.44l.017.224a22.41 22.41 0 0 0 .056 2.748c.095 1.146.273 2.13.5 2.657l.155-.084c-.334-1.038-.47-2.399-.41-3.967.09-2.398.642-5.29 1.661-8.304 1.723-4.55 4.113-8.201 6.3-9.945-1.993 1.8-4.692 7.63-5.5 9.788-.904 2.416-1.545 4.684-1.931 6.857.666-2.037 2.821-2.912 2.821-2.912s1.057-1.304 2.292-3.166c-.74.169-1.955.458-2.362.629-.6.251-.762.337-.762.337s1.945-1.184 3.613-1.72C21.695 7.9 24.195 2.767 21.678.521m-18.573.543A1.842 1.842 0 0 0 1.27 2.9v16.608a1.84 1.84 0 0 0 1.835 1.834h9.418a22.953 22.953 0 0 1-.052-2.707c-.006-.062-.011-.141-.016-.2a27.01 27.01 0 0 0-.473-2.378c-.121-.47-.275-.898-.369-1.057-.116-.197-.098-.31-.097-.432 0-.12.015-.245.037-.386a9.98 9.98 0 0 1 .234-1.045l.217-.028c-.017-.035-.014-.065-.031-.097l-.041-.381a32.8 32.8 0 0 1 .382-1.194l.2-.019c-.008-.016-.01-.038-.018-.053l-.043-.316c.63-3.28 2.587-7.443 4.8-9.791.066-.069.133-.128.198-.194Z"/></symbol>
+          <symbol id="lg-minio" viewBox="0 0 24 24"><path fill="#fff" d="M13.2072.006c-.6216-.0478-1.2.1943-1.6211.582a2.15 2.15 0 0 0-.0938 3.0352l3.4082 3.5507a3.042 3.042 0 0 1-.664 4.6875l-.463.2383V7.2853a15.4198 15.4198 0 0 0-8.0174 10.4862v.0176l6.5487-3.3281v7.621L13.7794 24V13.6817l.8965-.4629a4.4432 4.4432 0 0 0 1.2207-7.0292l-3.371-3.5254a.7489.7489 0 0 1 .037-1.0547.7522.7522 0 0 1 1.0567.0371l.4668.4863-.006.0059 4.0704 4.2441a.0566.0566 0 0 0 .082 0 .06.06 0 0 0 0-.0703l-3.1406-5.1425-.1484.1425.1484-.1445C14.4945.3926 13.8287.0538 13.2072.006Zm-.9024 9.8652v2.9941l-4.1523 2.1484a13.9787 13.9787 0 0 1 2.7676-3.9277 14.1784 14.1784 0 0 1 1.3847-1.2148z"/></symbol>
+          <pattern id="tool-pattern" width="490" height="350" patternUnits="userSpaceOnUse">
+            <g transform="translate(15.9,11.8) rotate(5.4 12 12) scale(0.95)"><use href="#lg-nextdotjs" width="24" height="24"/></g>
+            <g transform="translate(91.9,11.1) rotate(3.0 12 12) scale(0.88)"><use href="#lg-react" width="24" height="24"/></g>
+            <g transform="translate(154.6,11.0) rotate(-2.9 12 12) scale(1.0)"><use href="#lg-css" width="24" height="24"/></g>
+            <g transform="translate(223.1,15.1) rotate(11.8 12 12) scale(0.95)"><use href="#lg-html5" width="24" height="24"/></g>
+            <g transform="translate(303.4,17.6) rotate(3.0 12 12) scale(0.95)"><use href="#lg-php" width="24" height="24"/></g>
+            <g transform="translate(368.9,14.8) rotate(17.1 12 12) scale(0.95)"><use href="#lg-mysql" width="24" height="24"/></g>
+            <g transform="translate(438.7,11.6) rotate(-2.9 12 12) scale(0.88)"><use href="#lg-rabbitmq" width="24" height="24"/></g>
+            <g transform="translate(13.4,83.7) rotate(11.4 12 12) scale(1.0)"><use href="#lg-mongodb" width="24" height="24"/></g>
+            <g transform="translate(83.2,86.9) rotate(-11.2 12 12) scale(0.95)"><use href="#lg-tailwindcss" width="24" height="24"/></g>
+            <g transform="translate(158.6,80.8) rotate(-15.9 12 12) scale(1.0)"><use href="#lg-python" width="24" height="24"/></g>
+            <g transform="translate(228.0,86.4) rotate(10.0 12 12) scale(1.12)"><use href="#lg-nodedotjs" width="24" height="24"/></g>
+            <g transform="translate(299.0,85.4) rotate(-7.2 12 12) scale(1.0)"><use href="#lg-postgresql" width="24" height="24"/></g>
+            <g transform="translate(370.4,82.9) rotate(2.7 12 12) scale(0.88)"><use href="#lg-redis" width="24" height="24"/></g>
+            <g transform="translate(437.9,84.1) rotate(-1.8 12 12) scale(0.88)"><use href="#lg-docker" width="24" height="24"/></g>
+            <g transform="translate(23.8,151.4) rotate(-2.9 12 12) scale(1.05)"><use href="#lg-apachekafka" width="24" height="24"/></g>
+            <g transform="translate(83.8,155.9) rotate(-16.6 12 12) scale(0.95)"><use href="#lg-elasticsearch" width="24" height="24"/></g>
+            <g transform="translate(161.2,156.9) rotate(13.5 12 12) scale(1.05)"><use href="#lg-go" width="24" height="24"/></g>
+            <g transform="translate(226.1,154.2) rotate(-0.1 12 12) scale(1.12)"><use href="#lg-nginx" width="24" height="24"/></g>
+            <g transform="translate(292.8,151.1) rotate(-8.3 12 12) scale(0.95)"><use href="#lg-graphql" width="24" height="24"/></g>
+            <g transform="translate(362.7,158.4) rotate(5.3 12 12) scale(1.12)"><use href="#lg-apacheairflow" width="24" height="24"/></g>
+            <g transform="translate(435.4,154.6) rotate(6.1 12 12) scale(0.95)"><use href="#lg-clickhouse" width="24" height="24"/></g>
+            <g transform="translate(23.3,224.3) rotate(4.0 12 12) scale(1.12)"><use href="#lg-kubernetes" width="24" height="24"/></g>
+            <g transform="translate(82.7,229.2) rotate(-13.3 12 12) scale(1.0)"><use href="#lg-git" width="24" height="24"/></g>
+            <g transform="translate(156.8,231.0) rotate(-0.1 12 12) scale(1.0)"><use href="#lg-grafana" width="24" height="24"/></g>
+            <g transform="translate(227.4,226.6) rotate(13.8 12 12) scale(1.12)"><use href="#lg-prometheus" width="24" height="24"/></g>
+            <g transform="translate(302.4,223.3) rotate(-3.0 12 12) scale(1.05)"><use href="#lg-fastapi" width="24" height="24"/></g>
+            <g transform="translate(370.2,224.6) rotate(-9.7 12 12) scale(0.95)"><use href="#lg-django" width="24" height="24"/></g>
+            <g transform="translate(434.1,222.8) rotate(-9.6 12 12) scale(1.12)"><use href="#lg-celery" width="24" height="24"/></g>
+            <g transform="translate(22.0,292.2) rotate(-7.9 12 12) scale(1.0)"><use href="#lg-apachespark" width="24" height="24"/></g>
+            <g transform="translate(87.0,294.4) rotate(2.4 12 12) scale(1.0)"><use href="#lg-sqlite" width="24" height="24"/></g>
+            <g transform="translate(160.3,296.2) rotate(4.2 12 12) scale(0.95)"><use href="#lg-minio" width="24" height="24"/></g>
+            <g transform="translate(227.5,300.5) rotate(16.3 12 12) scale(0.88)"><use href="#lg-nextdotjs" width="24" height="24"/></g>
+            <g transform="translate(296.7,294.8) rotate(-14.3 12 12) scale(1.12)"><use href="#lg-react" width="24" height="24"/></g>
+            <g transform="translate(362.7,290.8) rotate(-10.5 12 12) scale(1.0)"><use href="#lg-css" width="24" height="24"/></g>
+            <g transform="translate(433.3,297.2) rotate(-14.3 12 12) scale(0.88)"><use href="#lg-html5" width="24" height="24"/></g>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#tool-pattern)"/>
+      </svg>
+    <div class="pill">گزارش سه‌ماهه · تیم فنی · دیتاک</div>
+    <h1>تابستان ۱۴۰۵</h1>
+    <p>خلاصه فعالیت‌ها و دستاوردهای اسکواد دیتا و اپلیکیشن</p>
+  </header>
+
+  <main class="wrap">
+    <section class="challenge">
+      <h2>از ۵۰۰ هزار به ۹۰۰ هزار توییت در روز، تا ساخت دستور در دستان</h2>
+      <p class="lead">
+        اسکواد دیتا جمع‌آوری توییتر را تقریباً دو برابر کرد و روش‌های ازکارافتاده اینستاگرام و روزنامه را جایگزین کرد.
+        اسکواد اپلیکیشن پوشش مطبوعات، جریان فرابستری و نمودار پراکندگی جغرافیایی را به جی‌پی‌آر داد،
+        دستان به فراموضوعی و ساخت دستور رسید،
+        و سوییوی پرداخت استرایپ را در نسخه یک عرضه کرد.
+      </p>
+    </section>
+
+    <section class="squad data">
+      <div class="squad-head">
+        <div class="squad-title">
+          <div class="icon" style="background:#e7f6f2;color:#0f8a73">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
+          </div>
+          <div>
+            <h3>اسکواد دیتا</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <h4>ریتوییت و جهش جمع‌آوری روزانه</h4>
+          <p>جمع‌آوری ریتوییت توییتر راه افتاد؛ از این مسیر حدود ۱۴۰ هزار توییت در روز می‌آید. جمع‌آوری توییتر از حدود ۵۰۰ هزار به حدود ۹۰۰ هزار مطلب در روز رسید.</p>
+          <div class="value">جمع‌آوری بازنشر توییتر شروع شد و حجم توییتر تقریباً دو برابر شد.</div>
+        </article>
+
+        <article class="card">
+          <h4>جستجوی کلمات روی یوتیوب</h4>
+          <p>سرچ کلمات به جمع‌آوری یوتیوب اضافه شد تا به‌جای برداشت پراکنده، محتوا با کوئری مشخص جمع شود و حجم بالا برود.</p>
+          <div class="value">جمع‌آوری یوتیوب هدفمندتر و پرحجم‌تر شد.</div>
+        </article>
+
+        <article class="card">
+          <h4>قطع جمع‌آوری اینستاگرام و روش جایگزین</h4>
+          <p>روش قدیمی بسته شد و جمع‌آوری اینستا قطع شد. روش جدید جایگزین شد و منابع ویژه دوباره کامل پوشش داده شد. سرچ کلمات اینستاگرام هم برای پوشش بهتر همان منابع ویژه آمد.</p>
+          <div class="value">قطع روش قبلی اینستا کل پوشش را نخواباند.</div>
+        </article>
+
+        <article class="card">
+          <h4>ریفکتور جمع‌آوری استوری</h4>
+          <p>جمع‌آوری استوری ریفکتور شد تا پایدارتر و پرحجم‌تر باشد.</p>
+          <div class="value">استوری با حجم بالاتر و قطع کمتر جمع می‌شود.</div>
+        </article>
+
+        <article class="card">
+          <h4>جمع‌آوری از نینی‌سایت</h4>
+          <p>بستر نینی‌سایت به فلو جمع‌آوری اضافه شد.</p>
+          <div class="value">پوشش فروم‌های فارسی گسترده شد.</div>
+        </article>
+
+        <article class="card">
+          <h4>بازدید و ایموجی روی بله</h4>
+          <p>ویو و ایموجی به بستر بله اضافه شد تا متریک‌های پیام‌رسان‌های داخلی کامل شود.</p>
+          <div class="value">تحلیل بله دیگر فقط تعداد پست نیست؛ اثرگذاری هم دیده می‌شود.</div>
+        </article>
+
+        <article class="card">
+          <h4>انتقال جمع‌آوری روزنامه کیوسک از پیشخوان به جار</h4>
+          <p>بعد از بسته شدن روش قبلی سایت پیشخوان، جمع‌آوری روزنامه برای کیوسک از سایت جار راه افتاد.</p>
+          <div class="value">پوشش مطبوعات چاپی قطع نشد.</div>
+        </article>
+
+        <article class="card">
+          <h4>ایجنت بهداد برای منابع خبری</h4>
+          <p>ایجنت بهداد برای کار اپریشن پیاده شد تا افزودن منابع خبری جدید سریع‌تر شود.</p>
+          <div class="value">اتصال منبع خبری جدید دستی و کند نمی‌ماند.</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="squad app-block">
+      <div class="squad-head">
+        <div class="squad-title">
+          <div class="icon" style="background:#e8f2fb;color:#1b6aa3">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+          </div>
+          <div>
+            <h3>اسکواد اپلیکیشن</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="chart-card">
+      <div class="chart-head">
+        <div>
+          <h3>زمان ریلیزها و حجم کار</h3>
+          <p>هر نسخه، تعداد تسک همان ریلیز در جیرا.</p>
+        </div>
+      </div>
+      <div class="chart-svg">
+        <svg viewBox="0 0 1040 372" role="img" aria-label="نمودار ریلیزهای تابستان ۱۴۰۵ با تعداد تسک هر نسخه">
+          <rect x="78" y="52" width="309" height="248" rx="16" fill="#f4f8fc"/>
+          <rect x="387" y="52" width="309" height="248" rx="16" fill="#f7f5fb"/>
+          <rect x="696" y="52" width="308" height="248" rx="16" fill="#fbf6ee"/>
+          <text x="232.5" y="74" text-anchor="middle" fill="#5b6b7c" font-size="12" font-weight="700" font-family="Vazirmatn, Tahoma, sans-serif">تیر</text>
+          <text x="541.5" y="74" text-anchor="middle" fill="#5b6b7c" font-size="12" font-weight="700" font-family="Vazirmatn, Tahoma, sans-serif">مرداد</text>
+          <text x="850" y="74" text-anchor="middle" fill="#5b6b7c" font-size="12" font-weight="700" font-family="Vazirmatn, Tahoma, sans-serif">شهریور</text>
+
+          <g stroke="#e4ebf2" stroke-width="1" fill="none">
+            <line x1="78" y1="300" x2="1004" y2="300"/>
+            <line x1="78" y1="235.3" x2="1004" y2="235.3"/>
+            <line x1="78" y1="170.6" x2="1004" y2="170.6"/>
+            <line x1="78" y1="105.9" x2="1004" y2="105.9"/>
+          </g>
+          <g fill="#8a97a6" font-size="11" text-anchor="end" font-family="Vazirmatn, Tahoma, sans-serif">
+            <text x="70" y="304">۰</text>
+            <text x="70" y="239">۱۰</text>
+            <text x="70" y="174">۲۰</text>
+            <text x="70" y="110">۳۰</text>
+          </g>
+
+          <rect class="chart-bar" style="--i:0" x="130" y="177.1" width="48" height="122.9" rx="10" fill="#163a5f"/>
+          <rect class="chart-bar" style="--i:1" x="278" y="209.4" width="48" height="90.6" rx="10" fill="#163a5f"/>
+          <rect class="chart-bar" style="--i:2" x="439" y="196.5" width="48" height="103.5" rx="10" fill="#163a5f"/>
+          <rect class="chart-bar" style="--i:3" x="587" y="222.4" width="48" height="77.6" rx="10" fill="#163a5f"/>
+          <rect class="chart-bar" style="--i:4" x="748" y="235.3" width="48" height="64.7" rx="10" fill="#b86a12"/>
+          <rect class="chart-bar" style="--i:5" x="896" y="92.9" width="48" height="207.1" rx="10" fill="#163a5f"/>
+
+          <g fill="#0c2744" font-size="14" font-weight="800" text-anchor="middle" font-family="Vazirmatn, Tahoma, sans-serif" stroke="#fff" stroke-width="4" paint-order="stroke">
+            <text x="154" y="169">۱۹</text>
+            <text x="302" y="201">۱۴</text>
+            <text x="463" y="188">۱۶</text>
+            <text x="611" y="214">۱۲</text>
+            <text x="772" y="227">۱۰</text>
+            <text x="920" y="85">۳۲</text>
+          </g>
+
+          <g fill="#1b2b3c" font-size="13" font-weight="700" text-anchor="middle" font-family="Vazirmatn, Tahoma, sans-serif">
+            <text x="154" y="326">4.6.7</text>
+            <text x="302" y="326">4.6.8</text>
+            <text x="463" y="326">4.6.10</text>
+            <text x="611" y="326">4.6.11</text>
+            <text x="772" y="326">1.0.0</text>
+            <text x="920" y="326">4.7.0</text>
+          </g>
+          <g fill="#8a97a6" font-size="11" text-anchor="middle" font-family="Vazirmatn, Tahoma, sans-serif">
+            <text x="154" y="346">۱۶ تیر</text>
+            <text x="302" y="346">۲۲ تیر</text>
+            <text x="463" y="346">۶ مرداد</text>
+            <text x="611" y="346">۱۸ مرداد</text>
+            <text x="772" y="346">۱۴ شهریور</text>
+            <text x="920" y="346">۱۶ شهریور</text>
+          </g>
+        </svg>
+      </div>
+      <div class="chart-mobile">
+        <div class="hbar-group tir">
+          <div class="hbar-month">تیر</div>
+          <div class="hbar">
+            <div class="hbar-top"><span class="hbar-ver">4.6.7</span><span class="hbar-date">۱۶ تیر</span><b>۱۹</b></div>
+            <div class="hbar-track"><div class="hbar-fill" style="width:59.375%"></div></div>
+          </div>
+          <div class="hbar">
+            <div class="hbar-top"><span class="hbar-ver">4.6.8</span><span class="hbar-date">۲۲ تیر</span><b>۱۴</b></div>
+            <div class="hbar-track"><div class="hbar-fill" style="width:43.75%"></div></div>
+          </div>
+        </div>
+        <div class="hbar-group mordad">
+          <div class="hbar-month">مرداد</div>
+          <div class="hbar">
+            <div class="hbar-top"><span class="hbar-ver">4.6.10</span><span class="hbar-date">۶ مرداد</span><b>۱۶</b></div>
+            <div class="hbar-track"><div class="hbar-fill" style="width:50%"></div></div>
+          </div>
+          <div class="hbar">
+            <div class="hbar-top"><span class="hbar-ver">4.6.11</span><span class="hbar-date">۱۸ مرداد</span><b>۱۲</b></div>
+            <div class="hbar-track"><div class="hbar-fill" style="width:37.5%"></div></div>
+          </div>
+        </div>
+        <div class="hbar-group shahrivar">
+          <div class="hbar-month">شهریور</div>
+          <div class="hbar">
+            <div class="hbar-top"><span class="hbar-ver">1.0.0</span><span class="hbar-date">۱۴ شهریور</span><b>۱۰</b></div>
+            <div class="hbar-track"><div class="hbar-fill sv" style="width:31.25%"></div></div>
+          </div>
+          <div class="hbar">
+            <div class="hbar-top"><span class="hbar-ver">4.7.0</span><span class="hbar-date">۱۶ شهریور</span><b>۳۲</b></div>
+            <div class="hbar-track"><div class="hbar-fill" style="width:100%"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="timeline">
+      <p class="month">تیر ۱۴۰۵</p>
+
+      <article class="tl mixed">
+        <div class="tl-head">
+          <div class="tl-date">۱۶ تیر</div>
+          <div class="vers"><span class="prod gpr">GPR</span><span class="prod dst">دستان</span><span class="ver">4.6.7</span></div>
+        </div>
+        <ul class="tl-list">
+          <li>سهم صدا روی برندبان به تفکیک بستر دیده می‌شود؛ هم پای‌چارت و هم روند زمانی</li>
+          <li>در درخت انتشار خبر، منبع بازنشرکننده جستجو و فیلتر می‌شود</li>
+          <li>در دستان آیکون وصل یا قطع اینترنت آمده تا اگر گفتگو خطا داد، معلوم شود از نت بوده</li>
+          <li>گفتگوهای پرکاربرد سنجاق می‌شوند و کل گفتگو را می‌شود به اشتراک گذاشت</li>
+        </ul>
+      </article>
+
+      <article class="tl gpr">
+        <div class="tl-head">
+          <div class="tl-date">۲۲ تیر</div>
+          <div class="vers"><span class="prod gpr">GPR</span><span class="ver">4.6.8</span></div>
+        </div>
+        <ul class="tl-list">
+          <li>لیست همهٔ بازنشرکننده‌های یک خبر را می‌شود به اکسل برد</li>
+          <li>با یک سوییچ، صفحهٔ اول روزنامه‌ها به بولتن دستی و خودکار اضافه می‌شود</li>
+          <li>ویرایش بولتن با بستن صفحه از بین نمی‌رود</li>
+        </ul>
+      </article>
+
+      <p class="month">مرداد ۱۴۰۵</p>
+
+      <article class="tl gpr">
+        <div class="tl-head">
+          <div class="tl-date">۶ مرداد</div>
+          <div class="vers"><span class="prod gpr">GPR</span><span class="ver">4.6.10</span></div>
+        </div>
+        <ul class="tl-list">
+          <li>مطالب خوانده‌شده نوار خاکستری می‌گیرند و با فیلتر پیدا می‌شوند</li>
+          <li>ساخت جریان فرابستری دیگر محدود به یک مورد نیست</li>
+          <li>تا ۵۰۰ مطلب را می‌شود مستقیم به بولتن فرستاد</li>
+          <li>چکیده روی جستجوی آزاد هم کار می‌کند، نه فقط روی موضوع</li>
+        </ul>
+      </article>
+
+      <article class="tl dastan">
+        <div class="tl-head">
+          <div class="tl-date">۱۸ مرداد</div>
+          <div class="vers"><span class="prod dst">دستان</span><span class="ver">4.6.11</span></div>
+        </div>
+        <ul class="tl-list">
+          <li>با فراموضوعی، دستان بدون قفل شدن روی یک موضوع کار می‌کند</li>
+          <li>پرامپت یا پاسخ جدا پاک می‌شود تا خروجی برای اشتراک تمیز شود</li>
+          <li>سقف ۱۰۰ پیام در ماه؛ گفتگو با عوض کردن تب یا بستن موبایل قطع نمی‌شود</li>
+        </ul>
+      </article>
+
+      <p class="month">شهریور ۱۴۰۵</p>
+
+      <article class="tl suivi">
+        <div class="tl-head">
+          <div class="tl-date">۱۴ شهریور</div>
+          <div class="vers"><span class="prod sv">SUIVI</span><span class="ver">1.0.0</span></div>
+        </div>
+        <ul class="tl-list">
+          <li>مدل قیمت‌گذاری و پرداخت سوییوی با استرایپ یکپارچه شد؛ سه پلن با دورهٔ آزمایشی</li>
+          <li>بخش‌های اصلی اپ، بر اساس پلن رایگان، پلن آزمایشی یا خریداری‌شده رفتار می‌کنند</li>
+        </ul>
+      </article>
+
+      <article class="tl mixed">
+        <div class="tl-head">
+          <div class="tl-date">۱۶ شهریور</div>
+          <div class="vers"><span class="prod gpr">GPR</span><span class="prod dst">دستان</span><span class="ver">4.7.0</span></div>
+        </div>
+        <ul class="tl-list">
+          <li>پراکندگی جغرافیایی مطالب روی نقشه، دیگر فقط برای خبر نیست و روی بقیهٔ بسترها هم هست</li>
+          <li>تا پنج بستر پرکاربرد در دسترسی سریع می‌مانند تا نوار بستر شلوغ نشود</li>
+          <li>در دستان دستور ساخته، ذخیره و سنجاق می‌شود و گفتگو با همان دستور شروع می‌شود</li>
+          <li>وضعیت اینترنت قوی، ضعیف یا بسیار ضعیف نشان داده می‌شود تا معلوم شود مشکل از نت است یا از سرویس</li>
+        </ul>
+      </article>
+    </div>
+
+    <section class="squad">
+      <div class="squad-head">
+        <div class="squad-title">
+          <div class="icon" style="background:#e7f6f2;color:#0f8a73">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V5M4 19h16M8 16V9m4 7V7m4 9v-5"/></svg>
+          </div>
+          <div>
+            <h3>خلاصه دستاوردهای فصل</h3>
+            <small>اثر روی محصول و بیزینس</small>
+          </div>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width:18%">محصول</th>
+            <th>دستاورد کلیدی</th>
+            <th>اثر روی بیزینس</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="prod data">دیتا</span></td>
+            <td>ریتوییت توییتر + جهش ۵۰۰ به ۹۰۰ هزار در روز</td>
+            <td>حجم توییتر تقریباً دو برابر؛ جمع‌آوری بازنشر شروع شد</td>
+          </tr>
+          <tr>
+            <td><span class="prod data">دیتا</span></td>
+            <td>قطع جمع‌آوری اینستا و روش جایگزین</td>
+            <td>قطع روش قدیمی اینستا کل پوشش را نخواباند</td>
+          </tr>
+          <tr>
+            <td><span class="prod data">دیتا</span></td>
+            <td>جار به‌جای پیشخوان</td>
+            <td>پوشش مطبوعات چاپی هنگام اختلال قطع نشد</td>
+          </tr>
+          <tr>
+            <td><span class="prod gpr">GPR</span></td>
+            <td>روزنامه در بولتن</td>
+            <td>پوشش مطبوعات چاپی در خروجی مشتری</td>
+          </tr>
+          <tr>
+            <td><span class="prod gpr">GPR</span></td>
+            <td>درخت انتشار: جستجو، فیلتر، اکسل</td>
+            <td>تحلیل بازنشر سریع‌تر و قابل خروجی</td>
+          </tr>
+          <tr>
+            <td><span class="prod gpr">GPR</span></td>
+            <td>مطالب مشاهده‌شده + جریان فرابستری + خروجی ۵۰۰تایی</td>
+            <td>کار روزانه و مانیتور چندبستری بدون سقف قبلی</td>
+          </tr>
+          <tr>
+            <td><span class="prod gpr">GPR</span></td>
+            <td>جغرافیا روی همه بسترها + دسترسی سریع بسترها</td>
+            <td>نوار بستر شلوغ نمی‌ماند؛ پراکندگی روی نقشه دیده می‌شود</td>
+          </tr>
+          <tr>
+            <td><span class="prod dst">دستان</span></td>
+            <td>فراموضوعی، پین، اشتراک و سقف ماهانه</td>
+            <td>گفتگوی پایدارتر و درگیری بدون قفل موضوع</td>
+          </tr>
+          <tr>
+            <td><span class="prod dst">دستان</span></td>
+            <td>ساخت و پین دستور + وضعیت اینترنت</td>
+            <td>دستور پرکاربرد دم دست؛ خطا از نت جدا می‌شود</td>
+          </tr>
+          <tr>
+            <td><span class="prod sv">SUIVI</span></td>
+            <td>مدل جدید قیمت‌گذاری با استرایپ</td>
+            <td>مسیر خرید و نمایش اشتراک یکدست شد</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    تابستان ۱۴۰۵
+    ·
+    ساخته‌شده با <span class="heart" aria-hidden="true">❤️</span>
+    ·
+    تیم فنی دیتاک
+  </footer>
+  <script>
+    (function () {
+      var card = document.querySelector(".challenge");
+      if (card) {
+        var applyH = function () {
+          document.documentElement.style.setProperty("--challenge-h", card.offsetHeight + "px");
+        };
+        applyH();
+        if (window.ResizeObserver) new ResizeObserver(applyH).observe(card);
+      }
+
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      var nodes = document.querySelectorAll(
+        ".challenge, .squad-head, .card, .chart-card, .month, .tl, .squad > table, footer, .chart-bar"
+      );
+      var current = [];
+      var target = [];
+      var i;
+      for (i = 0; i < nodes.length; i++) {
+        current[i] = 0;
+        target[i] = 0;
+        nodes[i].style.setProperty("--reveal", "0");
+      }
+
+      var layoutTop = function (el) {
+        var r = el.getBoundingClientRect();
+        if (el.classList.contains("chart-bar")) return r.top;
+        var tr = getComputedStyle(el).transform;
+        if (!tr || tr === "none") return r.top;
+        var ty = 0;
+        if (tr.indexOf("matrix3d") === 0) {
+          ty = parseFloat(tr.slice(9, -1).split(",")[13]) || 0;
+        } else if (tr.indexOf("matrix(") === 0) {
+          ty = parseFloat(tr.slice(7, -1).split(",")[5]) || 0;
+        }
+        return r.top - ty;
+      };
+
+      var running = false;
+      var compute = function () {
+        var vh = window.innerHeight || 1;
+        var desktop = window.innerWidth > 820;
+        var atBottom = window.scrollY + vh >= document.documentElement.scrollHeight - 6;
+        for (i = 0; i < nodes.length; i++) {
+          var el = nodes[i];
+          var top = layoutTop(el);
+          var height = el.offsetHeight || 0;
+          var delay = 0;
+          if (el.classList.contains("card")) {
+            delay = ([].indexOf.call(el.parentNode.children, el) % 2) * (desktop ? 0.05 : 0.08);
+          } else if (el.classList.contains("chart-bar")) {
+            delay = (parseFloat(el.style.getPropertyValue("--i")) || 0) * (desktop ? 0.04 : 0.05);
+          }
+          var start = vh * ((desktop ? 0.99 : 0.96) - delay);
+          var end = vh * ((desktop ? 0.50 : 0.62) - delay);
+          var t = (start - top) / (start - end);
+          if (t < 0) t = 0;
+          else if (t > 1) t = 1;
+          if (!desktop && top >= -12 && top + height <= vh + 12) t = 1;
+          if (atBottom && top < vh) t = 1;
+          target[i] = t;
+        }
+      };
+
+      var tick = function () {
+        compute();
+        var moving = false;
+        var ease = window.innerWidth > 820 ? 0.09 : 0.14;
+        for (i = 0; i < nodes.length; i++) {
+          var cur = current[i];
+          var next = cur + (target[i] - cur) * ease;
+          if (Math.abs(target[i] - next) < 0.002) next = target[i];
+          if (next !== cur) {
+            current[i] = next;
+            nodes[i].style.setProperty("--reveal", next.toFixed(4));
+            moving = true;
+          }
+        }
+        running = moving;
+        if (running) requestAnimationFrame(tick);
+      };
+
+      var kick = function () {
+        if (!running) {
+          running = true;
+          requestAnimationFrame(tick);
+        }
+      };
+
+      window.addEventListener("scroll", kick, { passive: true });
+      window.addEventListener("resize", kick);
+      kick();
+    })();
+  </script>
+</body>
+</html>
