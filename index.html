@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -72,14 +73,52 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(255,255,255,.12);
-      border: 1px solid rgba(255,255,255,.16);
-      color: #d7e6f5;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      isolation: isolate;
+      background: transparent;
+      border: none;
+      color: #e8f4ff;
       font-size: 12.5px;
       font-weight: 500;
-      padding: 6px 14px;
+      padding: 7px 16px;
       border-radius: 999px;
       margin-bottom: 18px;
+      box-shadow: 0 0 16px rgba(126, 200, 255, .22);
+    }
+    .pill::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 240%;
+      aspect-ratio: 1;
+      z-index: -2;
+      pointer-events: none;
+      background: conic-gradient(
+        from 0deg,
+        transparent 0 52%,
+        rgba(126, 200, 255, .2) 64%,
+        #7ec8ff 78%,
+        #fff 87%,
+        #d4f0ff 92%,
+        transparent 100%
+      );
+      animation: pill-orbit 2.4s linear infinite;
+    }
+    .pill::after {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      border-radius: inherit;
+      z-index: -1;
+      background: #143454;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+    }
+    @keyframes pill-orbit {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
     }
 
     .hero h1 {
@@ -211,9 +250,9 @@
       margin-bottom: 10px;
     }
     .hbar-group:last-child { margin-bottom: 0; }
-    .hbar-group.tir { background: #f4f8fc; }
-    .hbar-group.mordad { background: #f7f5fb; }
-    .hbar-group.shahrivar { background: #fbf6ee; }
+    .hbar-group.tir,
+    .hbar-group.mordad,
+    .hbar-group.shahrivar { background: #f4f8fc; }
     .hbar-month {
       font-size: 12px;
       font-weight: 700;
@@ -271,8 +310,10 @@
     }
 
     .timeline {
+      --rail: 12px;
+      --gutter: 32px;
       position: relative;
-      padding-right: 32px;
+      padding-right: var(--gutter);
       margin-top: 28px;
     }
     .timeline::before {
@@ -280,7 +321,7 @@
       position: absolute;
       top: 10px;
       bottom: 10px;
-      right: 6px;
+      right: calc(var(--rail) - 1px);
       width: 2px;
       background: linear-gradient(#c5d4e2, #dbe4ee);
     }
@@ -297,7 +338,7 @@
       content: "";
       position: absolute;
       top: 26px;
-      right: -30px;
+      right: calc(var(--rail) - var(--gutter) - 6px);
       width: 12px;
       height: 12px;
       border-radius: 50%;
@@ -578,12 +619,16 @@
         transform: none !important;
         will-change: auto;
       }
+      .pill::before {
+        animation: none;
+        background: rgba(255,255,255,.28);
+      }
     }
 
     @media (max-width: 820px) {
       .hero h1 { font-size: 40px; }
       .challenge { padding: 28px 22px; }
-      .timeline { padding-right: 24px; }
+      .timeline { --gutter: 24px; }
       .chart-card { padding: 20px 14px 16px; }
       .chart-head { align-items: flex-start; }
       .chart-total b { font-size: 28px; }
@@ -611,7 +656,7 @@
       }
       .chart-mobile { display: none !important; }
       .chart-svg { display: block !important; }
-      .challenge, .squad-head, .card, .chart-card, .month, .tl, table, footer, .chart-bar {
+      .challenge, .squad-head, .card, .chart-card, .month, .tl, table, footer, .chart-bar, .pill::before {
         animation: none !important;
         opacity: 1 !important;
         transform: none !important;
@@ -704,9 +749,9 @@
     <section class="challenge">
       <h2>از ۵۰۰ هزار به ۹۰۰ هزار توییت در روز، تا ساخت دستور در دستان</h2>
       <p class="lead">
-        اسکواد دیتا جمع‌آوری توییتر را تقریباً دو برابر کرد و روش‌های ازکارافتاده اینستاگرام و روزنامه را جایگزین کرد.
-        اسکواد اپلیکیشن پوشش مطبوعات، جریان فرابستری و نمودار پراکندگی جغرافیایی را به جی‌پی‌آر داد،
-        دستان به فراموضوعی و ساخت دستور رسید،
+        اسکواد دیتا جمع‌آوری توییتر را تقریباً دو برابر کرد؛ اینستاگرام و روزنامه هم بعد از قطع روش قبلی با روش تازه جایگزین شدند.
+        اسکواد اپلیکیشن در جی‌پی‌آر نمودار پراکندگی جغرافیایی را به همهٔ بسترها رساند و سهم صدا و درخت انتشار را کامل‌تر کرد،
+        فراموضوعی و ساخت دستور به دستان اضافه شد،
         و سوییوی پرداخت استرایپ را در نسخه یک عرضه کرد.
       </p>
     </section>
@@ -725,7 +770,7 @@
 
       <div class="grid">
         <article class="card">
-          <h4>ریتوییت و جهش جمع‌آوری روزانه</h4>
+          <h4>ریتوییت توییتر و جهش حجم توییتر</h4>
           <p>جمع‌آوری ریتوییت توییتر راه افتاد؛ از این مسیر حدود ۱۴۰ هزار توییت در روز می‌آید. جمع‌آوری توییتر از حدود ۵۰۰ هزار به حدود ۹۰۰ هزار مطلب در روز رسید.</p>
           <div class="value">جمع‌آوری بازنشر توییتر شروع شد و حجم توییتر تقریباً دو برابر شد.</div>
         </article>
@@ -739,7 +784,7 @@
         <article class="card">
           <h4>قطع جمع‌آوری اینستاگرام و روش جایگزین</h4>
           <p>روش قدیمی بسته شد و جمع‌آوری اینستا قطع شد. روش جدید جایگزین شد و منابع ویژه دوباره کامل پوشش داده شد. سرچ کلمات اینستاگرام هم برای پوشش بهتر همان منابع ویژه آمد.</p>
-          <div class="value">قطع روش قبلی اینستا کل پوشش را نخواباند.</div>
+          <div class="value">بعد از قطع روش قدیمی، جمع‌آوری اینستا با روش جدید ادامه پیدا کرد.</div>
         </article>
 
         <article class="card">
@@ -763,7 +808,7 @@
         <article class="card">
           <h4>انتقال جمع‌آوری روزنامه کیوسک از پیشخوان به جار</h4>
           <p>بعد از بسته شدن روش قبلی سایت پیشخوان، جمع‌آوری روزنامه برای کیوسک از سایت جار راه افتاد.</p>
-          <div class="value">پوشش مطبوعات چاپی قطع نشد.</div>
+          <div class="value">روزنامهٔ کیوسک حالا از جار جمع می‌شود.</div>
         </article>
 
         <article class="card">
@@ -796,12 +841,7 @@
       </div>
       <div class="chart-svg">
         <svg viewBox="0 0 1040 372" role="img" aria-label="نمودار ریلیزهای تابستان ۱۴۰۵ با تعداد تسک هر نسخه">
-          <rect x="78" y="52" width="309" height="248" rx="16" fill="#f4f8fc"/>
-          <rect x="387" y="52" width="309" height="248" rx="16" fill="#f7f5fb"/>
-          <rect x="696" y="52" width="308" height="248" rx="16" fill="#fbf6ee"/>
-          <text x="232.5" y="74" text-anchor="middle" fill="#5b6b7c" font-size="12" font-weight="700" font-family="Vazirmatn, Tahoma, sans-serif">تیر</text>
-          <text x="541.5" y="74" text-anchor="middle" fill="#5b6b7c" font-size="12" font-weight="700" font-family="Vazirmatn, Tahoma, sans-serif">مرداد</text>
-          <text x="850" y="74" text-anchor="middle" fill="#5b6b7c" font-size="12" font-weight="700" font-family="Vazirmatn, Tahoma, sans-serif">شهریور</text>
+          <rect x="78" y="52" width="926" height="248" rx="16" fill="#f4f8fc"/>
 
           <g stroke="#e4ebf2" stroke-width="1" fill="none">
             <line x1="78" y1="300" x2="1004" y2="300"/>
@@ -837,7 +877,7 @@
             <text x="302" y="326">4.6.8</text>
             <text x="463" y="326">4.6.10</text>
             <text x="611" y="326">4.6.11</text>
-            <text x="772" y="326">1.0.0</text>
+            <text x="772" y="326">1.0.0 (suivi)</text>
             <text x="920" y="326">4.7.0</text>
           </g>
           <g fill="#8a97a6" font-size="11" text-anchor="middle" font-family="Vazirmatn, Tahoma, sans-serif">
@@ -852,7 +892,6 @@
       </div>
       <div class="chart-mobile">
         <div class="hbar-group tir">
-          <div class="hbar-month">تیر</div>
           <div class="hbar">
             <div class="hbar-top"><span class="hbar-ver">4.6.7</span><span class="hbar-date">۱۶ تیر</span><b>۱۹</b></div>
             <div class="hbar-track"><div class="hbar-fill" style="width:59.375%"></div></div>
@@ -863,7 +902,6 @@
           </div>
         </div>
         <div class="hbar-group mordad">
-          <div class="hbar-month">مرداد</div>
           <div class="hbar">
             <div class="hbar-top"><span class="hbar-ver">4.6.10</span><span class="hbar-date">۶ مرداد</span><b>۱۶</b></div>
             <div class="hbar-track"><div class="hbar-fill" style="width:50%"></div></div>
@@ -874,9 +912,8 @@
           </div>
         </div>
         <div class="hbar-group shahrivar">
-          <div class="hbar-month">شهریور</div>
           <div class="hbar">
-            <div class="hbar-top"><span class="hbar-ver">1.0.0</span><span class="hbar-date">۱۴ شهریور</span><b>۱۰</b></div>
+            <div class="hbar-top"><span class="hbar-ver">1.0.0 (suivi)</span><span class="hbar-date">۱۴ شهریور</span><b>۱۰</b></div>
             <div class="hbar-track"><div class="hbar-fill sv" style="width:31.25%"></div></div>
           </div>
           <div class="hbar">
@@ -911,7 +948,7 @@
         <ul class="tl-list">
           <li>لیست همهٔ بازنشرکننده‌های یک خبر را می‌شود به اکسل برد</li>
           <li>با یک سوییچ، صفحهٔ اول روزنامه‌ها به بولتن دستی و خودکار اضافه می‌شود</li>
-          <li>ویرایش بولتن با بستن صفحه از بین نمی‌رود</li>
+          <li>ویرایش خروجی بولتن با بستن صفحه از بین نمی‌رود</li>
         </ul>
       </article>
 
@@ -936,9 +973,10 @@
           <div class="vers"><span class="prod dst">دستان</span><span class="ver">4.6.11</span></div>
         </div>
         <ul class="tl-list">
-          <li>با فراموضوعی، دستان بدون قفل شدن روی یک موضوع کار می‌کند</li>
+          <li>با فراموضوعی، دستان بدون محدود شدن به یک موضوع کار می‌کند</li>
           <li>پرامپت یا پاسخ جدا پاک می‌شود تا خروجی برای اشتراک تمیز شود</li>
-          <li>سقف ۱۰۰ پیام در ماه؛ گفتگو با عوض کردن تب یا بستن موبایل قطع نمی‌شود</li>
+          <li>محدودیت پیام دستان از روزانه به ۱۰۰ پیام در ماه تغییر کرد</li>
+          <li>گفتگو با عوض کردن تب یا بستن موبایل قطع نمی‌شود</li>
         </ul>
       </article>
 
@@ -993,18 +1031,18 @@
         <tbody>
           <tr>
             <td><span class="prod data">دیتا</span></td>
-            <td>ریتوییت توییتر + جهش ۵۰۰ به ۹۰۰ هزار در روز</td>
+            <td>ریتوییت توییتر + جهش ۵۰۰ به ۹۰۰ هزار توییت در روز</td>
             <td>حجم توییتر تقریباً دو برابر؛ جمع‌آوری بازنشر شروع شد</td>
           </tr>
           <tr>
             <td><span class="prod data">دیتا</span></td>
             <td>قطع جمع‌آوری اینستا و روش جایگزین</td>
-            <td>قطع روش قدیمی اینستا کل پوشش را نخواباند</td>
+            <td>جمع‌آوری اینستا با روش جدید ادامه پیدا کرد</td>
           </tr>
           <tr>
             <td><span class="prod data">دیتا</span></td>
-            <td>جار به‌جای پیشخوان</td>
-            <td>پوشش مطبوعات چاپی هنگام اختلال قطع نشد</td>
+            <td>جمع‌آوری روزنامه کیوسک از جار</td>
+            <td>کیوسک روزنامهٔ چاپی را از منبع تازه می‌گیرد</td>
           </tr>
           <tr>
             <td><span class="prod gpr">GPR</span></td>
@@ -1019,22 +1057,22 @@
           <tr>
             <td><span class="prod gpr">GPR</span></td>
             <td>مطالب مشاهده‌شده + جریان فرابستری + خروجی ۵۰۰تایی</td>
-            <td>کار روزانه و مانیتور چندبستری بدون سقف قبلی</td>
+            <td>مطالب خوانده‌شده پیدا می‌شوند؛ می‌شود چند جریان فرابستری ساخت</td>
           </tr>
           <tr>
             <td><span class="prod gpr">GPR</span></td>
-            <td>جغرافیا روی همه بسترها + دسترسی سریع بسترها</td>
+            <td>نمودار پراکندگی جغرافیایی روی همه بسترها + دسترسی سریع بسترها</td>
             <td>نوار بستر شلوغ نمی‌ماند؛ پراکندگی روی نقشه دیده می‌شود</td>
           </tr>
           <tr>
             <td><span class="prod dst">دستان</span></td>
-            <td>فراموضوعی، پین، اشتراک و سقف ماهانه</td>
-            <td>گفتگوی پایدارتر و درگیری بدون قفل موضوع</td>
+            <td>فراموضوعی، پین، اشتراک و محدودیت ماهانه</td>
+            <td>گفتگوی پایدارتر؛ استفاده از دستان بدون محدود شدن به یک موضوع</td>
           </tr>
           <tr>
             <td><span class="prod dst">دستان</span></td>
             <td>ساخت و پین دستور + وضعیت اینترنت</td>
-            <td>دستور پرکاربرد دم دست؛ خطا از نت جدا می‌شود</td>
+            <td>دستورهای پرکاربرد ذخیره می‌شوند؛ اگر گفتگو خطا داد معلوم می‌شود از نت بوده یا از سرویس</td>
           </tr>
           <tr>
             <td><span class="prod sv">SUIVI</span></td>
